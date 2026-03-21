@@ -1,0 +1,12 @@
+# Private overrides — never committed
+CLAUDE.local.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.idea/
+.vscode/
+*.swp
+*.swo

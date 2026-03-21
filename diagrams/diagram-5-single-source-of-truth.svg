@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 710" font-family="'Segoe UI',system-ui,-apple-system,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0%" stop-color="#0c1222"/><stop offset="100%" stop-color="#141e30"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#047857"/><stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b45309"/><stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b91c1c"/><stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <filter id="sh">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
+    <marker id="aA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d97706"/></marker>
+  </defs>
+
+  <rect width="1100" height="710" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="550" y="36" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="700">Single Source of Truth — Change Once, Applies Everywhere</text>
+  <text x="550" y="54" text-anchor="middle" fill="#64748b" font-size="12">Centralized docs referenced by all skills and agents · No duplication · No drift</text>
+  <rect x="380" y="62" width="340" height="2" fill="url(#green)" rx="1"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- SOURCE 1: coding-standards.md                -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="85" width="500" height="130" fill="#111827" rx="10" stroke="#10b981" stroke-width="1.5"/>
+  </g>
+  <rect x="30" y="85" width="500" height="30" fill="url(#green)" rx="10"/>
+  <rect x="30" y="105" width="500" height="10" fill="url(#green)"/>
+  <text x="280" y="105" text-anchor="middle" fill="#f0fdf4" font-size="13" font-weight="700">📖  docs/coding-standards.md</text>
+
+  <text x="50" y="136" fill="#cbd5e1" font-size="11">All coding conventions across stacks in one file:</text>
+  <text x="50" y="156" fill="#94a3b8" font-size="10">• Java: naming, DI, exception handling, immutability, thread safety</text>
+  <text x="50" y="172" fill="#94a3b8" font-size="10">• TypeScript: strict typing, no any, interface patterns, barrel exports</text>
+  <text x="50" y="188" fill="#94a3b8" font-size="10">• Angular: component style, RxJS usage, lazy loading, standalone</text>
+  <text x="50" y="204" fill="#94a3b8" font-size="10">• React: hooks rules, memoization, composition, state management</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- SOURCE 2: review-severity-scale.md           -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="570" y="85" width="500" height="130" fill="#111827" rx="10" stroke="#d97706" stroke-width="1.5"/>
+  </g>
+  <rect x="570" y="85" width="500" height="30" fill="url(#amber)" rx="10"/>
+  <rect x="570" y="105" width="500" height="10" fill="url(#amber)"/>
+  <text x="820" y="105" text-anchor="middle" fill="#0f172a" font-size="13" font-weight="700">📏  docs/review-severity-scale.md</text>
+
+  <text x="590" y="136" fill="#cbd5e1" font-size="11">Severity definitions and examples:</text>
+  <g font-size="10">
+    <circle cx="600" cy="155" r="5" fill="#ef4444"/>
+    <text x="612" y="159" fill="#fca5a5">CRITICAL</text>
+    <circle cx="700" cy="155" r="5" fill="#f97316"/>
+    <text x="712" y="159" fill="#fdba74">MAJOR</text>
+    <circle cx="780" cy="155" r="5" fill="#eab308"/>
+    <text x="792" y="159" fill="#fde047">MINOR</text>
+    <circle cx="860" cy="155" r="5" fill="#3b82f6"/>
+    <text x="872" y="159" fill="#93c5fd">INFO</text>
+    <circle cx="920" cy="155" r="5" fill="#94a3b8"/>
+    <text x="932" y="159" fill="#cbd5e1">NIT</text>
+  </g>
+  <text x="590" y="184" fill="#94a3b8" font-size="10">Concrete examples for each level so agents</text>
+  <text x="590" y="198" fill="#94a3b8" font-size="10">rate findings consistently and reports merge cleanly</text>
+
+  <!-- ════════════════════════════════════════════════════ -->
+  <!-- ARROWS: coding-standards.md → consumers             -->
+  <!-- All orthogonal: vertical down, horizontal, vertical -->
+  <!-- ════════════════════════════════════════════════════ -->
+
+  <!-- coding-standards → 3 skills (straight down) -->
+  <path d="M122 215 L122 284" stroke="#10b981" stroke-width="1.5" fill="none" marker-end="url(#aG)"/>
+  <path d="M280 215 L280 284" stroke="#10b981" stroke-width="1.5" fill="none" marker-end="url(#aG)"/>
+  <path d="M438 215 L438 284" stroke="#10b981" stroke-width="1.5" fill="none" marker-end="url(#aG)"/>
+
+  <!-- coding-standards → 4 agents: S-path -->
+  <!-- Trunk: down from right edge, horizontal right, then fan down -->
+  <path d="M480 215 L480 245 L916 245" stroke="#10b981" stroke-width="1.5" fill="none"/>
+  <path d="M724 245 L724 284" stroke="#10b981" stroke-width="1.5" fill="none" marker-end="url(#aG)"/>
+  <path d="M820 245 L820 284" stroke="#10b981" stroke-width="1.5" fill="none" marker-end="url(#aG)"/>
+  <path d="M916 245 L916 284" stroke="#10b981" stroke-width="1.5" fill="none" marker-end="url(#aG)"/>
+  <path d="M1012 245 L1012 284" stroke="#10b981" stroke-width="1.5" fill="none" marker-end="url(#aG)"/>
+  <path d="M916 245 L1012 245" stroke="#10b981" stroke-width="1.5" fill="none"/>
+
+  <!-- ════════════════════════════════════════════════════ -->
+  <!-- ARROWS: review-severity-scale.md → consumers        -->
+  <!-- All orthogonal: down, horizontal, then fan down     -->
+  <!-- ════════════════════════════════════════════════════ -->
+  <path d="M820 215 L820 258 L628 258" stroke="#d97706" stroke-width="1.5" fill="none"/>
+  <path d="M820 258 L1012 258" stroke="#d97706" stroke-width="1.5" fill="none"/>
+  <path d="M628 258 L628 284" stroke="#d97706" stroke-width="1.5" fill="none" marker-end="url(#aA)"/>
+  <path d="M724 258 L724 284" stroke="#d97706" stroke-width="1.5" fill="none" marker-end="url(#aA)"/>
+  <path d="M820 258 L820 284" stroke="#d97706" stroke-width="1.5" fill="none" marker-end="url(#aA)"/>
+  <path d="M916 258 L916 284" stroke="#d97706" stroke-width="1.5" fill="none" marker-end="url(#aA)"/>
+  <path d="M1012 258 L1012 284" stroke="#d97706" stroke-width="1.5" fill="none" marker-end="url(#aA)"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- CONSUMERS: Skills row                        -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="288" width="500" height="120" fill="#111827" rx="10" stroke="#8b5cf6" stroke-width="1"/>
+  </g>
+  <rect x="30" y="288" width="500" height="28" fill="url(#purple)" rx="10"/>
+  <rect x="30" y="308" width="500" height="8" fill="url(#purple)"/>
+  <text x="280" y="306" text-anchor="middle" fill="#faf5ff" font-size="12" font-weight="700">SKILLS  ·  consume coding-standards.md</text>
+
+  <rect x="48" y="326" width="148" height="70" fill="#1a1a2e" rx="6" stroke="#ef4444" stroke-width="0.5"/>
+  <text x="122" y="348" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="700">☕ java-conventions</text>
+  <text x="122" y="366" text-anchor="middle" fill="#94a3b8" font-size="9">SKILL.md + reference.md</text>
+  <text x="122" y="388" text-anchor="middle" fill="#10b981" font-size="8">← Java conventions</text>
+
+  <rect x="206" y="326" width="148" height="70" fill="#1a1a2e" rx="6" stroke="#3b82f6" stroke-width="0.5"/>
+  <text x="280" y="348" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">🅰️ angular-conventions</text>
+  <text x="280" y="366" text-anchor="middle" fill="#94a3b8" font-size="9">SKILL.md + reference.md</text>
+  <text x="280" y="388" text-anchor="middle" fill="#10b981" font-size="8">← Angular/TS conventions</text>
+
+  <rect x="364" y="326" width="148" height="70" fill="#1a1a2e" rx="6" stroke="#06b6d4" stroke-width="0.5"/>
+  <text x="438" y="348" text-anchor="middle" fill="#67e8f9" font-size="11" font-weight="700">⚛️ react-conventions</text>
+  <text x="438" y="366" text-anchor="middle" fill="#94a3b8" font-size="9">SKILL.md + reference.md</text>
+  <text x="438" y="388" text-anchor="middle" fill="#10b981" font-size="8">← React/TS conventions</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- CONSUMERS: Agents row                        -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="570" y="288" width="500" height="120" fill="#111827" rx="10" stroke="#ef4444" stroke-width="1"/>
+  </g>
+  <rect x="570" y="288" width="500" height="28" fill="url(#red)" rx="10"/>
+  <rect x="570" y="308" width="500" height="8" fill="url(#red)"/>
+  <text x="820" y="306" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">AGENTS  ·  consume both docs</text>
+
+  <rect x="584" y="326" width="88" height="70" fill="#1a1a2e" rx="5" stroke="#334155" stroke-width="0.5"/>
+  <text x="628" y="346" text-anchor="middle" fill="#f8fafc" font-size="9" font-weight="700">🎯 orchestrator</text>
+  <circle cx="610" cy="364" r="4" fill="#d97706"/>
+  <text x="620" y="368" fill="#94a3b8" font-size="8">severity</text>
+  <text x="628" y="386" text-anchor="middle" fill="#64748b" font-size="7">merges reports</text>
+
+  <rect x="680" y="326" width="88" height="70" fill="#1a1a2e" rx="5" stroke="#334155" stroke-width="0.5"/>
+  <text x="724" y="346" text-anchor="middle" fill="#f8fafc" font-size="9" font-weight="700">🏗️ architect</text>
+  <circle cx="706" cy="364" r="4" fill="#10b981"/>
+  <text x="716" y="368" fill="#94a3b8" font-size="8">standards</text>
+  <circle cx="706" cy="380" r="4" fill="#d97706"/>
+  <text x="716" y="384" fill="#94a3b8" font-size="8">severity</text>
+
+  <rect x="776" y="326" width="88" height="70" fill="#1a1a2e" rx="5" stroke="#334155" stroke-width="0.5"/>
+  <text x="820" y="346" text-anchor="middle" fill="#f8fafc" font-size="9" font-weight="700">🛡️ security</text>
+  <circle cx="802" cy="364" r="4" fill="#10b981"/>
+  <text x="812" y="368" fill="#94a3b8" font-size="8">standards</text>
+  <circle cx="802" cy="380" r="4" fill="#d97706"/>
+  <text x="812" y="384" fill="#94a3b8" font-size="8">severity</text>
+
+  <rect x="872" y="326" width="88" height="70" fill="#1a1a2e" rx="5" stroke="#334155" stroke-width="0.5"/>
+  <text x="916" y="346" text-anchor="middle" fill="#f8fafc" font-size="9" font-weight="700">✨ quality</text>
+  <circle cx="898" cy="364" r="4" fill="#10b981"/>
+  <text x="908" y="368" fill="#94a3b8" font-size="8">standards</text>
+  <circle cx="898" cy="380" r="4" fill="#d97706"/>
+  <text x="908" y="384" fill="#94a3b8" font-size="8">severity</text>
+
+  <rect x="968" y="326" width="88" height="70" fill="#1a1a2e" rx="5" stroke="#334155" stroke-width="0.5"/>
+  <text x="1012" y="346" text-anchor="middle" fill="#f8fafc" font-size="9" font-weight="700">⚡ performance</text>
+  <circle cx="994" cy="364" r="4" fill="#10b981"/>
+  <text x="1004" y="368" fill="#94a3b8" font-size="8">standards</text>
+  <circle cx="994" cy="380" r="4" fill="#d97706"/>
+  <text x="1004" y="384" fill="#94a3b8" font-size="8">severity</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- KEY PRINCIPLE box                            -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="436" width="1040" height="120" fill="#111827" rx="10" stroke="#8b5cf6" stroke-width="1"/>
+  </g>
+  <rect x="30" y="436" width="1040" height="30" fill="url(#purple)" rx="10"/>
+  <rect x="30" y="456" width="1040" height="10" fill="url(#purple)"/>
+  <text x="550" y="456" text-anchor="middle" fill="#faf5ff" font-size="13" font-weight="700">💡  KEY PRINCIPLE — WHY THIS MATTERS</text>
+
+  <text x="50" y="488" fill="#cbd5e1" font-size="11">Without centralized docs, conventions would be duplicated across 3 skills and 5+ agents.</text>
+  <text x="50" y="504" fill="#cbd5e1" font-size="11">A single change (e.g., "switch from camelCase to snake_case for DB columns") would require editing 8+ files.</text>
+
+  <!-- Without / With — clear gap below text -->
+  <rect x="80" y="526" width="12" height="12" fill="#ef4444" rx="2"/>
+  <text x="100" y="537" fill="#fca5a5" font-size="11" font-weight="700">Without:</text>
+  <text x="172" y="537" fill="#94a3b8" font-size="11">edit 8+ files, risk drift, inconsistencies</text>
+
+  <rect x="550" y="526" width="12" height="12" fill="#10b981" rx="2"/>
+  <text x="570" y="537" fill="#6ee7b7" font-size="11" font-weight="700">With:</text>
+  <text x="612" y="537" fill="#94a3b8" font-size="11">edit 1 file, all consumers inherit the change</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- DEPENDENCY LEGEND                            -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="580" width="1040" height="100" fill="#111827" rx="10" stroke="#334155" stroke-width="1"/>
+  </g>
+  <text x="50" y="607" fill="#94a3b8" font-size="11" font-weight="600">DEPENDENCY MAP</text>
+
+  <rect x="50" y="618" width="16" height="16" fill="#10b981" rx="3"/>
+  <text x="74" y="630" fill="#10b981" font-size="11" font-weight="600" font-family="'Cascadia Code','Fira Code',monospace">coding-standards.md</text>
+  <text x="74" y="646" fill="#94a3b8" font-size="10">→ java-conventions · angular-conventions · react-conventions</text>
+  <text x="74" y="660" fill="#94a3b8" font-size="10">→ reviewer-architect · reviewer-security · reviewer-quality · reviewer-performance</text>
+  <text x="74" y="674" fill="#64748b" font-size="9">7 consumers total</text>
+
+  <rect x="570" y="618" width="16" height="16" fill="#d97706" rx="3"/>
+  <text x="594" y="630" fill="#d97706" font-size="11" font-weight="600" font-family="'Cascadia Code','Fira Code',monospace">review-severity-scale.md</text>
+  <text x="594" y="646" fill="#94a3b8" font-size="10">→ orchestrator-review · reviewer-architect · reviewer-security</text>
+  <text x="594" y="660" fill="#94a3b8" font-size="10">→ reviewer-quality · reviewer-performance · dependency-scanner</text>
+  <text x="594" y="674" fill="#64748b" font-size="9">6 consumers total</text>
+
+  <!-- Footer -->
+  <text x="550" y="700" text-anchor="middle" fill="#334155" font-size="10">claude-code-setup · docs/ is the single source of truth · all skills and agents reference, never duplicate</text>
+</svg>

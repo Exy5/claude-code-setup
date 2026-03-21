@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="720" fill="url(#bgGrad)" rx="12"/>
+
+  <!-- Title -->
+  <text x="480" y="42" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="700" letter-spacing="0.5">Claude Code — Local Setup Architecture</text>
+  <rect x="280" y="50" width="400" height="2" fill="url(#accentGrad)" rx="1"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- STEP 1: Prerequisites (top-left)                -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="75" width="280" height="200" fill="url(#cardGrad)" rx="10" stroke="#334155" stroke-width="1"/>
+  </g>
+  <rect x="30" y="75" width="280" height="32" fill="url(#accentGrad)" rx="10"/>
+  <rect x="30" y="97" width="280" height="10" fill="url(#accentGrad)"/>
+  <text x="170" y="96" text-anchor="middle" fill="#0f172a" font-size="13" font-weight="700">① PREREQUISITES</text>
+
+  <text x="50" y="130" fill="#94a3b8" font-size="11" font-weight="600">REQUIRED</text>
+  <circle cx="52" cy="148" r="4" fill="#10b981"/>
+  <text x="62" y="152" fill="#e2e8f0" font-size="12">Node.js 18+ (for MCP servers)</text>
+  <circle cx="52" cy="168" r="4" fill="#10b981"/>
+  <text x="62" y="172" fill="#e2e8f0" font-size="12">Git (Windows: Git for Windows)</text>
+  <circle cx="52" cy="188" r="4" fill="#10b981"/>
+  <text x="62" y="192" fill="#e2e8f0" font-size="12">Claude Pro / Max / Teams plan</text>
+
+  <text x="50" y="218" fill="#94a3b8" font-size="11" font-weight="600">OR</text>
+  <circle cx="52" cy="236" r="4" fill="#f59e0b"/>
+  <text x="62" y="240" fill="#e2e8f0" font-size="12">Anthropic API key (pay-per-use)</text>
+  <circle cx="52" cy="256" r="4" fill="#f59e0b"/>
+  <text x="62" y="260" fill="#e2e8f0" font-size="12">Bedrock / Vertex AI credentials</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- STEP 2: Installation (top-center)               -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g filter="url(#shadow)">
+    <rect x="340" y="75" width="280" height="200" fill="url(#cardGrad)" rx="10" stroke="#334155" stroke-width="1"/>
+  </g>
+  <rect x="340" y="75" width="280" height="32" fill="url(#blueGrad)" rx="10"/>
+  <rect x="340" y="97" width="280" height="10" fill="url(#blueGrad)"/>
+  <text x="480" y="96" text-anchor="middle" fill="#f0f9ff" font-size="13" font-weight="700">② INSTALL CLAUDE CODE</text>
+
+  <text x="360" y="130" fill="#94a3b8" font-size="11" font-weight="600">NATIVE INSTALLER (recommended)</text>
+  <rect x="360" y="138" width="240" height="22" fill="#1a1a2e" rx="4" stroke="#475569" stroke-width="0.5"/>
+  <text x="370" y="153" fill="#fbbf24" font-size="11" font-family="'Cascadia Code', 'Fira Code', monospace">$ curl -fsSL https://...</text>
+
+  <text x="360" y="182" fill="#94a3b8" font-size="11" font-weight="600">macOS</text>
+  <rect x="360" y="190" width="240" height="22" fill="#1a1a2e" rx="4" stroke="#475569" stroke-width="0.5"/>
+  <text x="370" y="205" fill="#fbbf24" font-size="11" font-family="'Cascadia Code', 'Fira Code', monospace">$ brew install claude-code</text>
+
+  <text x="360" y="232" fill="#94a3b8" font-size="11" font-weight="600">WINDOWS</text>
+  <rect x="360" y="240" width="240" height="22" fill="#1a1a2e" rx="4" stroke="#475569" stroke-width="0.5"/>
+  <text x="370" y="255" fill="#fbbf24" font-size="11" font-family="'Cascadia Code', 'Fira Code', monospace">$ winget install Anthropic.ClaudeCode</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- STEP 3: Authenticate (top-right)                -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <g filter="url(#shadow)">
+    <rect x="650" y="75" width="280" height="200" fill="url(#cardGrad)" rx="10" stroke="#334155" stroke-width="1"/>
+  </g>
+  <rect x="650" y="75" width="280" height="32" fill="url(#greenGrad)" rx="10"/>
+  <rect x="650" y="97" width="280" height="10" fill="url(#greenGrad)"/>
+  <text x="790" y="96" text-anchor="middle" fill="#f0fdf4" font-size="13" font-weight="700">③ AUTHENTICATE</text>
+
+  <rect x="670" y="120" width="240" height="22" fill="#1a1a2e" rx="4" stroke="#475569" stroke-width="0.5"/>
+  <text x="680" y="135" fill="#fbbf24" font-size="11" font-family="'Cascadia Code', 'Fira Code', monospace">$ claude</text>
+  <text x="670" y="160" fill="#cbd5e1" font-size="11">→ Browser opens for OAuth login</text>
+  <text x="670" y="176" fill="#cbd5e1" font-size="11">→ Approve &amp; return to terminal</text>
+
+  <line x1="670" y1="192" x2="910" y2="192" stroke="#334155" stroke-width="1"/>
+  <text x="670" y="210" fill="#94a3b8" font-size="11" font-weight="600">API KEY (alternative)</text>
+  <rect x="670" y="218" width="240" height="22" fill="#1a1a2e" rx="4" stroke="#475569" stroke-width="0.5"/>
+  <text x="680" y="233" fill="#fbbf24" font-size="11" font-family="'Cascadia Code', 'Fira Code', monospace">$ export ANTHROPIC_API_KEY="sk-..."</text>
+  <text x="670" y="258" fill="#64748b" font-size="10">Add to ~/.bashrc or ~/.zshrc</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Connection arrows (top row)                     -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <path d="M310 175 L340 175" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <path d="M620 175 L650 175" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <defs>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"/>
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- STEP 4: Project Config (middle, wide)           -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <path d="M480 275 L480 300" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="30" y="305" width="900" height="170" fill="url(#cardGrad)" rx="10" stroke="#334155" stroke-width="1"/>
+  </g>
+  <rect x="30" y="305" width="900" height="32" fill="url(#purpleGrad)" rx="10"/>
+  <rect x="30" y="327" width="900" height="10" fill="url(#purpleGrad)"/>
+  <text x="480" y="326" text-anchor="middle" fill="#faf5ff" font-size="13" font-weight="700">④ PROJECT CONFIGURATION</text>
+
+  <!-- CLAUDE.md -->
+  <rect x="50" y="350" width="260" height="110" fill="#1a1a2e" rx="6" stroke="#475569" stroke-width="0.5"/>
+  <text x="60" y="370" fill="#f59e0b" font-size="12" font-weight="700" font-family="'Cascadia Code', 'Fira Code', monospace">CLAUDE.md</text>
+  <text x="60" y="370" fill="#f59e0b" font-size="12" font-weight="700" font-family="'Cascadia Code', 'Fira Code', monospace">CLAUDE.md</text>
+  <text x="60" y="390" fill="#94a3b8" font-size="11">Project memory &amp; rules for Claude.</text>
+  <text x="60" y="408" fill="#cbd5e1" font-size="10">• Stack versions &amp; conventions</text>
+  <text x="60" y="422" fill="#cbd5e1" font-size="10">• Forbidden patterns &amp; lint rules</text>
+  <text x="60" y="436" fill="#cbd5e1" font-size="10">• DB schema notes &amp; API patterns</text>
+  <text x="60" y="450" fill="#cbd5e1" font-size="10">• Run /init to generate one</text>
+
+  <!-- .mcp.json -->
+  <rect x="350" y="350" width="260" height="110" fill="#1a1a2e" rx="6" stroke="#475569" stroke-width="0.5"/>
+  <text x="360" y="370" fill="#3b82f6" font-size="12" font-weight="700" font-family="'Cascadia Code', 'Fira Code', monospace">.mcp.json</text>
+  <text x="360" y="390" fill="#94a3b8" font-size="11">Project-scoped MCP servers.</text>
+  <text x="360" y="408" fill="#cbd5e1" font-size="10">• Shared with team via git</text>
+  <text x="360" y="422" fill="#cbd5e1" font-size="10">• GitHub, Playwright, Sentry, etc.</text>
+  <text x="360" y="436" fill="#cbd5e1" font-size="10">• Credentials stay in local scope</text>
+  <text x="360" y="450" fill="#cbd5e1" font-size="10">• claude mcp add --scope project</text>
+
+  <!-- ~/.claude.json -->
+  <rect x="650" y="350" width="260" height="110" fill="#1a1a2e" rx="6" stroke="#475569" stroke-width="0.5"/>
+  <text x="660" y="370" fill="#10b981" font-size="12" font-weight="700" font-family="'Cascadia Code', 'Fira Code', monospace">~/.claude.json</text>
+  <text x="660" y="390" fill="#94a3b8" font-size="11">User-level settings &amp; MCP servers.</text>
+  <text x="660" y="408" fill="#cbd5e1" font-size="10">• Private API keys &amp; tokens</text>
+  <text x="660" y="422" fill="#cbd5e1" font-size="10">• User-scoped MCP servers</text>
+  <text x="660" y="436" fill="#cbd5e1" font-size="10">• Theme, auto-update prefs</text>
+  <text x="660" y="450" fill="#cbd5e1" font-size="10">• Local overrides project scope</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- STEP 5: MCP Servers (bottom row)                -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <path d="M480 475 L480 500" stroke="#a78bfa" stroke-width="2" marker-end="url(#arrowPurple)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="30" y="510" width="900" height="190" fill="url(#cardGrad)" rx="10" stroke="#334155" stroke-width="1"/>
+  </g>
+  <rect x="30" y="510" width="900" height="32" fill="#dc2626" rx="10"/>
+  <rect x="30" y="532" width="900" height="10" fill="#dc2626"/>
+  <text x="480" y="531" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">⑤ MCP SERVERS — EXTEND CLAUDE CODE</text>
+
+  <!-- Server cards -->
+  <!-- GitHub -->
+  <rect x="50" y="555" width="160" height="60" fill="#1a1a2e" rx="6" stroke="#475569" stroke-width="0.5"/>
+  <text x="130" y="575" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">GitHub</text>
+  <text x="130" y="592" text-anchor="middle" fill="#94a3b8" font-size="10">PRs · Issues · CI/CD</text>
+  <text x="130" y="606" text-anchor="middle" fill="#64748b" font-size="9">claude mcp add github</text>
+
+  <!-- Playwright -->
+  <rect x="230" y="555" width="160" height="60" fill="#1a1a2e" rx="6" stroke="#475569" stroke-width="0.5"/>
+  <text x="310" y="575" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">Playwright</text>
+  <text x="310" y="592" text-anchor="middle" fill="#94a3b8" font-size="10">Browser testing</text>
+  <text x="310" y="606" text-anchor="middle" fill="#64748b" font-size="9">npx @anthropic/.../playwright</text>
+
+  <!-- Sentry -->
+  <rect x="410" y="555" width="160" height="60" fill="#1a1a2e" rx="6" stroke="#475569" stroke-width="0.5"/>
+  <text x="490" y="575" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">Sentry</text>
+  <text x="490" y="592" text-anchor="middle" fill="#94a3b8" font-size="10">Error monitoring</text>
+  <text x="490" y="606" text-anchor="middle" fill="#64748b" font-size="9">Production debugging</text>
+
+  <!-- Database -->
+  <rect x="590" y="555" width="160" height="60" fill="#1a1a2e" rx="6" stroke="#475569" stroke-width="0.5"/>
+  <text x="670" y="575" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">PostgreSQL</text>
+  <text x="670" y="592" text-anchor="middle" fill="#94a3b8" font-size="10">Direct DB access</text>
+  <text x="670" y="606" text-anchor="middle" fill="#64748b" font-size="9">Supabase / local DB</text>
+
+  <!-- Figma -->
+  <rect x="770" y="555" width="160" height="60" fill="#1a1a2e" rx="6" stroke="#475569" stroke-width="0.5"/>
+  <text x="850" y="575" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">Figma</text>
+  <text x="850" y="592" text-anchor="middle" fill="#94a3b8" font-size="10">Design → Code</text>
+  <text x="850" y="606" text-anchor="middle" fill="#64748b" font-size="9">UI components</text>
+
+  <!-- Scope legend -->
+  <text x="50" y="645" fill="#94a3b8" font-size="11" font-weight="600">SCOPE PRECEDENCE:</text>
+  <rect x="200" y="633" width="12" height="12" fill="#ef4444" rx="2"/>
+  <text x="218" y="644" fill="#e2e8f0" font-size="11">Local (private, per-project)</text>
+  <text x="388" y="644" fill="#64748b" font-size="11">▸</text>
+  <rect x="400" y="633" width="12" height="12" fill="#3b82f6" rx="2"/>
+  <text x="418" y="644" fill="#e2e8f0" font-size="11">Project (.mcp.json, shared)</text>
+  <text x="588" y="644" fill="#64748b" font-size="11">▸</text>
+  <rect x="600" y="633" width="12" height="12" fill="#10b981" rx="2"/>
+  <text x="618" y="644" fill="#e2e8f0" font-size="11">User (~/.claude.json, cross-project)</text>
+
+  <!-- Helpful commands -->
+  <text x="50" y="675" fill="#94a3b8" font-size="11" font-weight="600">USEFUL COMMANDS:</text>
+  <text x="200" y="675" fill="#fbbf24" font-size="11" font-family="'Cascadia Code', 'Fira Code', monospace">/init</text>
+  <text x="240" y="675" fill="#94a3b8" font-size="11">create CLAUDE.md</text>
+  <text x="370" y="675" fill="#fbbf24" font-size="11" font-family="'Cascadia Code', 'Fira Code', monospace">/mcp</text>
+  <text x="403" y="675" fill="#94a3b8" font-size="11">check servers</text>
+  <text x="510" y="675" fill="#fbbf24" font-size="11" font-family="'Cascadia Code', 'Fira Code', monospace">/doctor</text>
+  <text x="560" y="675" fill="#94a3b8" font-size="11">diagnose issues</text>
+  <text x="680" y="675" fill="#fbbf24" font-size="11" font-family="'Cascadia Code', 'Fira Code', monospace">/bug</text>
+  <text x="710" y="675" fill="#94a3b8" font-size="11">report issues</text>
+  <text x="810" y="675" fill="#fbbf24" font-size="11" font-family="'Cascadia Code', 'Fira Code', monospace">claude doctor</text>
+  <text x="898" y="675" fill="#94a3b8" font-size="11">health check</text>
+
+  <!-- Version tag -->
+  <text x="920" y="710" text-anchor="end" fill="#475569" font-size="9">v2.x · code.claude.com/docs/en/setup</text>
+</svg>

@@ -1,0 +1,258 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 780" font-family="'Segoe UI',system-ui,-apple-system,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0%" stop-color="#0c1222"/><stop offset="100%" stop-color="#141e30"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b45309"/><stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1d4ed8"/><stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#047857"/><stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b91c1c"/><stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0e7490"/><stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="sh">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="aW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#94a3b8"/></marker>
+    <marker id="aR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ef4444"/></marker>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
+    <marker id="aB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3b82f6"/></marker>
+    <marker id="aC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#06b6d4"/></marker>
+    <marker id="aA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d97706"/></marker>
+  </defs>
+
+  <rect width="1100" height="780" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="550" y="36" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="700">Review Workflow — Multi-Agent Pipeline</text>
+  <text x="550" y="54" text-anchor="middle" fill="#64748b" font-size="12">/review triggers a parallel 4-agent review coordinated by an orchestrator</text>
+  <rect x="380" y="62" width="340" height="2" fill="url(#red)" rx="1"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- STEP 1: Developer trigger                    -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="85" width="220" height="80" fill="#111827" rx="10" stroke="#1e293b" stroke-width="1"/>
+  </g>
+  <rect x="30" y="85" width="220" height="30" fill="url(#green)" rx="10"/>
+  <rect x="30" y="105" width="220" height="10" fill="url(#green)"/>
+  <text x="140" y="105" text-anchor="middle" fill="#f0fdf4" font-size="12" font-weight="700">👨‍💻  DEVELOPER</text>
+  <text x="140" y="138" text-anchor="middle" fill="#22d3ee" font-size="13" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">/review src/auth/</text>
+  <text x="140" y="155" text-anchor="middle" fill="#64748b" font-size="10">or just /review for all changes</text>
+
+  <!-- Arrow: Developer → Command -->
+  <path d="M250 125 L310 125" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- STEP 2: Command file                         -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="315" y="85" width="200" height="80" fill="#111827" rx="10" stroke="#1e293b" stroke-width="1"/>
+  </g>
+  <rect x="315" y="85" width="200" height="30" fill="url(#cyan)" rx="10"/>
+  <rect x="315" y="105" width="200" height="10" fill="url(#cyan)"/>
+  <text x="415" y="105" text-anchor="middle" fill="#ecfeff" font-size="12" font-weight="700">⌨️  COMMAND</text>
+  <text x="415" y="135" text-anchor="middle" fill="#22d3ee" font-size="12" font-family="'Cascadia Code','Fira Code',monospace">commands/review.md</text>
+  <text x="415" y="155" text-anchor="middle" fill="#64748b" font-size="10">triggers orchestrator agent</text>
+
+  <!-- Arrow: Command → Orchestrator -->
+  <path d="M515 125 L578 125" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- STEP 3: Orchestrator                         -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="583" y="82" width="490" height="90" fill="#111827" rx="10" stroke="#ef4444" stroke-width="1.5"/>
+  </g>
+  <rect x="583" y="82" width="490" height="30" fill="url(#red)" rx="10"/>
+  <rect x="583" y="102" width="490" height="10" fill="url(#red)"/>
+  <text x="828" y="102" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">🎯  ORCHESTRATOR  ·  orchestrator-review.md</text>
+  <text x="603" y="132" fill="#94a3b8" font-size="11">1. Determines scope (changed files or specified path)</text>
+  <text x="603" y="148" fill="#94a3b8" font-size="11">2. Spawns 4 reviewers in parallel via Agent()</text>
+  <text x="603" y="164" fill="#94a3b8" font-size="11">3. Collects, deduplicates, sorts by severity → saves report</text>
+  <text x="920" y="132" fill="#64748b" font-size="10">Model: Sonnet</text>
+  <text x="920" y="148" fill="#64748b" font-size="10">Tools: Read, Write,</text>
+  <text x="920" y="164" fill="#64748b" font-size="10">Glob, Grep, Agent</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- Fan-out arrows                               -->
+  <!-- ════════════════════════════════════════════ -->
+  <path d="M680 172 L180 218" stroke="#ef4444" stroke-width="1.5" marker-end="url(#aR)"/>
+  <path d="M750 172 L468 218" stroke="#ef4444" stroke-width="1.5" marker-end="url(#aR)"/>
+  <path d="M880 172 L758 218" stroke="#ef4444" stroke-width="1.5" marker-end="url(#aR)"/>
+  <path d="M950 172 L945 218" stroke="#ef4444" stroke-width="1.5" marker-end="url(#aR)"/>
+
+  <!-- PARALLEL label -->
+  <rect x="490" y="188" width="120" height="20" fill="#0c1222" rx="4"/>
+  <text x="550" y="203" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="700">⚡ IN PARALLEL</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- 4 Reviewer agents                            -->
+  <!-- ════════════════════════════════════════════ -->
+  <!-- Architect -->
+  <g filter="url(#sh)">
+    <rect x="30" y="222" width="240" height="130" fill="#111827" rx="8" stroke="#334155" stroke-width="1"/>
+  </g>
+  <rect x="30" y="222" width="240" height="28" fill="#1e293b" rx="8"/>
+  <rect x="30" y="242" width="240" height="8" fill="#1e293b"/>
+  <text x="150" y="243" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">🏗️  reviewer-architect</text>
+  <text x="48" y="272" fill="#94a3b8" font-size="10">SOLID principles</text>
+  <text x="48" y="286" fill="#94a3b8" font-size="10">Layer separation (Ctrl → Svc → Repo)</text>
+  <text x="48" y="300" fill="#94a3b8" font-size="10">DI correctness, circular deps</text>
+  <text x="48" y="314" fill="#94a3b8" font-size="10">Thread safety, module boundaries</text>
+  <text x="48" y="336" fill="#475569" font-size="9">Sonnet · Read, Glob, Grep (read-only)</text>
+
+  <!-- Security -->
+  <g filter="url(#sh)">
+    <rect x="290" y="222" width="240" height="130" fill="#111827" rx="8" stroke="#334155" stroke-width="1"/>
+  </g>
+  <rect x="290" y="222" width="240" height="28" fill="#1e293b" rx="8"/>
+  <rect x="290" y="242" width="240" height="8" fill="#1e293b"/>
+  <text x="410" y="243" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">🛡️  reviewer-security</text>
+  <text x="308" y="272" fill="#94a3b8" font-size="10">OWASP Top 10</text>
+  <text x="308" y="286" fill="#94a3b8" font-size="10">SQL injection, XSS, CSRF</text>
+  <text x="308" y="300" fill="#94a3b8" font-size="10">Hardcoded secrets, auth gaps</text>
+  <text x="308" y="314" fill="#94a3b8" font-size="10">Input validation, supply chain</text>
+  <text x="308" y="336" fill="#475569" font-size="9">Sonnet (Opus for critical) · Read-only</text>
+
+  <!-- Quality -->
+  <g filter="url(#sh)">
+    <rect x="550" y="222" width="240" height="130" fill="#111827" rx="8" stroke="#334155" stroke-width="1"/>
+  </g>
+  <rect x="550" y="222" width="240" height="28" fill="#1e293b" rx="8"/>
+  <rect x="550" y="242" width="240" height="8" fill="#1e293b"/>
+  <text x="670" y="243" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">✨  reviewer-quality</text>
+  <text x="568" y="272" fill="#94a3b8" font-size="10">Code smells, magic numbers</text>
+  <text x="568" y="286" fill="#94a3b8" font-size="10">Naming conventions</text>
+  <text x="568" y="300" fill="#94a3b8" font-size="10">DRY violations, dead code</text>
+  <text x="568" y="314" fill="#94a3b8" font-size="10">Missing/misleading docs</text>
+  <text x="568" y="336" fill="#475569" font-size="9">Sonnet · Read, Glob, Grep (read-only)</text>
+
+  <!-- Performance -->
+  <g filter="url(#sh)">
+    <rect x="810" y="222" width="260" height="130" fill="#111827" rx="8" stroke="#334155" stroke-width="1"/>
+  </g>
+  <rect x="810" y="222" width="260" height="28" fill="#1e293b" rx="8"/>
+  <rect x="810" y="242" width="260" height="8" fill="#1e293b"/>
+  <text x="940" y="243" text-anchor="middle" fill="#f8fafc" font-size="12" font-weight="700">⚡  reviewer-performance</text>
+  <text x="828" y="272" fill="#94a3b8" font-size="10">N+1 queries, memory leaks</text>
+  <text x="828" y="286" fill="#94a3b8" font-size="10">Resource leaks (streams, conns)</text>
+  <text x="828" y="300" fill="#94a3b8" font-size="10">Missing trackBy, bundle size</text>
+  <text x="828" y="314" fill="#94a3b8" font-size="10">Unnecessary re-renders, Web Vitals</text>
+  <text x="828" y="336" fill="#475569" font-size="9">Sonnet · Read, Glob, Grep (read-only)</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- Shared references (both docs)                -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="380" width="1040" height="52" fill="#111827" rx="8" stroke="#10b981" stroke-width="1"/>
+  </g>
+  <text x="50" y="405" fill="#10b981" font-size="11" font-weight="700">📖  SHARED REFERENCES</text>
+  <text x="50" y="422" fill="#94a3b8" font-size="11">All 4 reviewers read from:</text>
+  <text x="260" y="412" fill="#10b981" font-size="11" font-family="'Cascadia Code','Fira Code',monospace">docs/coding-standards.md</text>
+  <text x="550" y="412" fill="#64748b" font-size="11">conventions for all checks</text>
+  <text x="750" y="412" fill="#10b981" font-size="11" font-family="'Cascadia Code','Fira Code',monospace">docs/review-severity-scale.md</text>
+  <text x="750" y="426" fill="#64748b" font-size="10">consistent severity ratings across agents</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- Return arrows (reviewers → orchestrator)     -->
+  <!-- ════════════════════════════════════════════ -->
+  <text x="550" y="460" text-anchor="middle" fill="#64748b" font-size="10" font-weight="600">REPORTS RETURN TO ORCHESTRATOR</text>
+  <path d="M150 352 L400 468" stroke="#475569" stroke-width="1" stroke-dasharray="5,3" marker-end="url(#aW)"/>
+  <path d="M410 352 L470 468" stroke="#475569" stroke-width="1" stroke-dasharray="5,3" marker-end="url(#aW)"/>
+  <path d="M670 352 L570 468" stroke="#475569" stroke-width="1" stroke-dasharray="5,3" marker-end="url(#aW)"/>
+  <path d="M940 352 L640 468" stroke="#475569" stroke-width="1" stroke-dasharray="5,3" marker-end="url(#aW)"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- Consolidation + Report                       -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="280" y="472" width="540" height="60" fill="#111827" rx="10" stroke="#d97706" stroke-width="1.5"/>
+  </g>
+  <rect x="280" y="472" width="540" height="28" fill="url(#amber)" rx="10"/>
+  <rect x="280" y="492" width="540" height="8" fill="url(#amber)"/>
+  <text x="550" y="492" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="700">📋  CONSOLIDATION</text>
+  <text x="300" y="520" fill="#94a3b8" font-size="11">Deduplicate findings  →  Sort by severity (CRITICAL first)  →  Label each item by agent</text>
+
+  <!-- Arrow: Consolidation → Report file -->
+  <path d="M550 532 L550 558" stroke="#d97706" stroke-width="2" marker-end="url(#aA)"/>
+
+  <!-- Report file -->
+  <g filter="url(#sh)">
+    <rect x="350" y="562" width="400" height="42" fill="#111827" rx="8" stroke="#d97706" stroke-width="1"/>
+  </g>
+  <text x="550" y="582" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">reviews/&lt;timestamp&gt;-review.md</text>
+  <text x="550" y="598" text-anchor="middle" fill="#64748b" font-size="10">saved to project directory</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- Example output                               -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="622" width="650" height="140" fill="#0f172a" rx="8" stroke="#334155" stroke-width="1"/>
+  </g>
+  <text x="50" y="644" fill="#64748b" font-size="10" font-weight="600">EXAMPLE REPORT OUTPUT:</text>
+
+  <g font-family="'Cascadia Code','Fira Code',monospace" font-size="11">
+    <circle cx="50" cy="666" r="5" fill="#ef4444"/>
+    <text x="62" y="670" fill="#fca5a5" font-weight="600">CRITICAL</text>
+    <text x="145" y="670" fill="#64748b">[security]</text>
+    <text x="248" y="670" fill="#94a3b8">AuthService.java:42</text>
+    <text x="248" y="684" fill="#64748b" font-size="10">Raw SQL concatenation with user input</text>
+
+    <circle cx="50" cy="700" r="5" fill="#f97316"/>
+    <text x="62" y="704" fill="#fdba74" font-weight="600">MAJOR</text>
+    <text x="145" y="704" fill="#64748b">[architect]</text>
+    <text x="248" y="704" fill="#94a3b8">UserController.java:15</text>
+    <text x="248" y="718" fill="#64748b" font-size="10">Controller directly accesses Repository</text>
+
+    <circle cx="50" cy="734" r="5" fill="#eab308"/>
+    <text x="62" y="738" fill="#fde047" font-weight="600">MINOR</text>
+    <text x="145" y="738" fill="#64748b">[quality]</text>
+    <text x="248" y="738" fill="#94a3b8">UserService.java:88</text>
+    <text x="248" y="752" fill="#64748b" font-size="10">Magic number — extract to named constant</text>
+
+    <circle cx="50" cy="758" r="5" fill="#94a3b8"/>
+    <text x="62" y="762" fill="#cbd5e1" font-weight="600">NIT</text>
+    <text x="145" y="762" fill="#64748b">[quality]</text>
+    <text x="248" y="762" fill="#94a3b8">UserDto.java:3</text>
+  </g>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- Severity Legend                               -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="700" y="622" width="370" height="140" fill="#111827" rx="8" stroke="#334155" stroke-width="1"/>
+  </g>
+  <text x="720" y="644" fill="#94a3b8" font-size="10" font-weight="600">SEVERITY SCALE</text>
+
+  <circle cx="720" cy="666" r="6" fill="#ef4444"/>
+  <text x="732" y="670" fill="#fca5a5" font-size="11" font-weight="600">CRITICAL</text>
+  <text x="810" y="670" fill="#64748b" font-size="10">Must fix before merge</text>
+
+  <circle cx="720" cy="690" r="6" fill="#f97316"/>
+  <text x="732" y="694" fill="#fdba74" font-size="11" font-weight="600">MAJOR</text>
+  <text x="810" y="694" fill="#64748b" font-size="10">Should fix before merge</text>
+
+  <circle cx="720" cy="714" r="6" fill="#eab308"/>
+  <text x="732" y="718" fill="#fde047" font-size="11" font-weight="600">MINOR</text>
+  <text x="810" y="718" fill="#64748b" font-size="10">Recommended fix</text>
+
+  <circle cx="720" cy="738" r="6" fill="#3b82f6"/>
+  <text x="732" y="742" fill="#93c5fd" font-size="11" font-weight="600">INFO</text>
+  <text x="810" y="742" fill="#64748b" font-size="10">Optional suggestion</text>
+
+  <circle cx="720" cy="754" r="6" fill="#94a3b8"/>
+  <text x="732" y="758" fill="#cbd5e1" font-size="11" font-weight="600">NIT</text>
+  <text x="810" y="758" fill="#64748b" font-size="10">Purely optional nitpick</text>
+</svg>

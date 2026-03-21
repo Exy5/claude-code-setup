@@ -1,0 +1,248 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 780" font-family="'Segoe UI',system-ui,-apple-system,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0%" stop-color="#0c1222"/><stop offset="100%" stop-color="#141e30"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#047857"/><stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b45309"/><stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b91c1c"/><stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1d4ed8"/><stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0e7490"/><stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="rose" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9f1239"/><stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+    <filter id="sh">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="aW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#94a3b8"/></marker>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
+  </defs>
+
+  <rect width="1100" height="780" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="550" y="36" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="700">Developer Workflow — Daily Usage</text>
+  <text x="550" y="54" text-anchor="middle" fill="#64748b" font-size="12">From session start to commit · The typical flow through a feature development cycle</text>
+  <rect x="380" y="62" width="340" height="2" fill="url(#green)" rx="1"/>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- STEP 1: Start Session                            -->
+  <!-- ════════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="82" width="320" height="192" fill="#111827" rx="10" stroke="#10b981" stroke-width="1.5"/>
+  </g>
+  <rect x="30" y="82" width="320" height="30" fill="url(#green)" rx="10"/>
+  <rect x="30" y="102" width="320" height="10" fill="url(#green)"/>
+  <text x="190" y="102" text-anchor="middle" fill="#f0fdf4" font-size="13" font-weight="700">①  START SESSION</text>
+
+  <text x="50" y="132" fill="#22d3ee" font-size="13" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">$ cd ~/projects/my-app</text>
+  <text x="50" y="150" fill="#22d3ee" font-size="13" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">$ claude</text>
+
+  <text x="50" y="176" fill="#94a3b8" font-size="10" font-weight="600">AUTO-LOADED:</text>
+  <circle cx="58" cy="192" r="3" fill="#10b981"/>
+  <text x="68" y="196" fill="#cbd5e1" font-size="10">~/.claude/CLAUDE.md (global baseline)</text>
+  <circle cx="58" cy="208" r="3" fill="#3b82f6"/>
+  <text x="68" y="212" fill="#cbd5e1" font-size="10">.claude/CLAUDE.md (project, if exists)</text>
+  <circle cx="58" cy="224" r="3" fill="#f59e0b"/>
+  <text x="68" y="228" fill="#cbd5e1" font-size="10">CLAUDE.local.md (private, if exists)</text>
+  <circle cx="58" cy="240" r="3" fill="#8b5cf6"/>
+  <text x="68" y="244" fill="#cbd5e1" font-size="10">All agents, skills, commands, hooks</text>
+  <circle cx="58" cy="256" r="3" fill="#06b6d4"/>
+  <text x="68" y="260" fill="#cbd5e1" font-size="10">Docs (single sources of truth)</text>
+
+  <!-- Arrow 1→2 -->
+  <path d="M350 178 L390 178" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- STEP 1b: New Project? (conditional)              -->
+  <!-- ════════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="395" y="82" width="310" height="192" fill="#111827" rx="10" stroke="#8b5cf6" stroke-width="1"/>
+  </g>
+  <rect x="395" y="82" width="310" height="30" fill="url(#purple)" rx="10"/>
+  <rect x="395" y="102" width="310" height="10" fill="url(#purple)"/>
+  <text x="550" y="102" text-anchor="middle" fill="#faf5ff" font-size="13" font-weight="700">NEW PROJECT?</text>
+
+  <text x="415" y="130" fill="#cbd5e1" font-size="11">If no .claude/CLAUDE.md exists:</text>
+
+  <text x="415" y="154" fill="#94a3b8" font-size="10" font-weight="600">KICKOFF QUESTIONS:</text>
+  <text x="415" y="172" fill="#94a3b8" font-size="10">• What is the project's purpose?</text>
+  <text x="415" y="188" fill="#94a3b8" font-size="10">• What stack/frameworks?</text>
+  <text x="415" y="204" fill="#94a3b8" font-size="10">• Expected scale &amp; lifespan?</text>
+  <text x="415" y="220" fill="#94a3b8" font-size="10">• Non-functional requirements?</text>
+  <text x="415" y="236" fill="#94a3b8" font-size="10">• Deployment target?</text>
+
+  <text x="415" y="260" fill="#64748b" font-size="10">→ Writes answers to .claude/CLAUDE.md</text>
+
+  <!-- Arrow 1b→2 -->
+  <path d="M705 178 L748 178" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- STEP 2: Work                                     -->
+  <!-- ════════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="753" y="82" width="318" height="192" fill="#111827" rx="10" stroke="#3b82f6" stroke-width="1.5"/>
+  </g>
+  <rect x="753" y="82" width="318" height="30" fill="url(#blue)" rx="10"/>
+  <rect x="753" y="102" width="318" height="10" fill="url(#blue)"/>
+  <text x="912" y="102" text-anchor="middle" fill="#eff6ff" font-size="13" font-weight="700">②  WORK</text>
+
+  <text x="773" y="130" fill="#cbd5e1" font-size="11">Developer and Claude collaborate:</text>
+
+  <text x="773" y="154" fill="#94a3b8" font-size="10" font-weight="600">CLAUDE FOLLOWS:</text>
+  <text x="773" y="172" fill="#94a3b8" font-size="10">ask → plan → implement sequence</text>
+  <text x="773" y="188" fill="#94a3b8" font-size="10">for non-trivial tasks</text>
+
+  <rect x="771" y="198" width="282" height="1" fill="#1e293b"/>
+
+  <text x="773" y="218" fill="#94a3b8" font-size="10" font-weight="600">SKILLS AUTO-ACTIVATE:</text>
+  <text x="773" y="236" fill="#fca5a5" font-size="10">*.java → java-conventions</text>
+  <text x="773" y="250" fill="#93c5fd" font-size="10">*.component.ts → angular-conventions</text>
+  <text x="773" y="264" fill="#67e8f9" font-size="10">*.tsx → react-conventions</text>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- Vertical connector: top row → bottom row         -->
+  <!-- ════════════════════════════════════════════════ -->
+  <path d="M912 274 L912 310" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+  <text x="930" y="296" fill="#64748b" font-size="9">feature done</text>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- STEP 3: Test (auto-spawn)                        -->
+  <!-- ════════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="753" y="314" width="318" height="130" fill="#111827" rx="10" stroke="#06b6d4" stroke-width="1.5"/>
+  </g>
+  <rect x="753" y="314" width="318" height="30" fill="url(#cyan)" rx="10"/>
+  <rect x="753" y="334" width="318" height="10" fill="url(#cyan)"/>
+  <text x="912" y="334" text-anchor="middle" fill="#ecfeff" font-size="13" font-weight="700">③  TEST</text>
+
+  <rect x="773" y="354" width="82" height="18" fill="#059669" rx="3"/>
+  <text x="814" y="367" text-anchor="middle" fill="#f0fdf4" font-size="9" font-weight="700">AUTO-SPAWN</text>
+  <text x="862" y="367" fill="#94a3b8" font-size="10">test-writer agent activates</text>
+
+  <text x="773" y="392" fill="#cbd5e1" font-size="10">• Generates tests for completed code</text>
+  <text x="773" y="408" fill="#cbd5e1" font-size="10">• JUnit/Mockito (Java) · Jest/Jasmine (TS)</text>
+  <text x="773" y="424" fill="#cbd5e1" font-size="10">• Target: 90%+ code coverage</text>
+  <text x="773" y="438" fill="#64748b" font-size="10">Edge cases, boundary values, error paths</text>
+
+  <!-- Arrow 3→4 -->
+  <path d="M753 380 L718 380" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+  <text x="732" y="374" fill="#64748b" font-size="9">ready</text>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- STEP 4: Review                                   -->
+  <!-- ════════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="395" y="314" width="318" height="130" fill="#111827" rx="10" stroke="#ef4444" stroke-width="1.5"/>
+  </g>
+  <rect x="395" y="314" width="318" height="30" fill="url(#red)" rx="10"/>
+  <rect x="395" y="334" width="318" height="10" fill="url(#red)"/>
+  <text x="554" y="334" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">④  REVIEW</text>
+
+  <text x="415" y="362" fill="#22d3ee" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">/review</text>
+  <text x="490" y="362" fill="#94a3b8" font-size="10">or</text>
+  <text x="510" y="362" fill="#22d3ee" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">/review src/auth/</text>
+
+  <text x="415" y="386" fill="#cbd5e1" font-size="10">• Orchestrator spawns 4 reviewers in parallel</text>
+  <text x="415" y="402" fill="#cbd5e1" font-size="10">• architect · security · quality · performance</text>
+  <text x="415" y="418" fill="#cbd5e1" font-size="10">• Severity-sorted report with agent labels</text>
+  <text x="415" y="436" fill="#fbbf24" font-size="10" font-family="'Cascadia Code','Fira Code',monospace">→ reviews/&lt;timestamp&gt;-review.md</text>
+
+  <!-- Arrow 4→fix loop -->
+  <path d="M554 444 L554 468" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- Fix issues box -->
+  <g filter="url(#sh)">
+    <rect x="440" y="472" width="228" height="38" fill="#111827" rx="8" stroke="#f59e0b" stroke-width="1"/>
+  </g>
+  <text x="554" y="496" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">Fix CRITICALs &amp; MAJORs</text>
+  <text x="554" y="506" text-anchor="middle" fill="#64748b" font-size="9">with main Claude session</text>
+
+  <!-- Arrow fix→5 -->
+  <path d="M440 491 L378 491" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- STEP 5: Document (optional)                      -->
+  <!-- ════════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="314" width="340" height="130" fill="#111827" rx="10" stroke="#d97706" stroke-width="1"/>
+  </g>
+  <rect x="30" y="314" width="340" height="30" fill="url(#amber)" rx="10"/>
+  <rect x="30" y="334" width="340" height="10" fill="url(#amber)"/>
+  <text x="200" y="334" text-anchor="middle" fill="#0f172a" font-size="13" font-weight="700">⑤  DOCUMENT  (optional)</text>
+
+  <text x="50" y="362" fill="#22d3ee" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">/document</text>
+  <text x="145" y="362" fill="#94a3b8" font-size="10">for significant changes</text>
+
+  <text x="50" y="386" fill="#cbd5e1" font-size="10">• Documenter analyzes codebase</text>
+  <text x="50" y="402" fill="#cbd5e1" font-size="10">• Updates .claude/CLAUDE.md</text>
+  <text x="50" y="418" fill="#cbd5e1" font-size="10">• Updates .claude/docs/architecture.md</text>
+  <text x="50" y="434" fill="#64748b" font-size="10">Keeps project context accurate for next session</text>
+
+  <!-- Arrow 5→6 -->
+  <path d="M200 444 L200 468" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- STEP 6: Commit                                   -->
+  <!-- ════════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="472" width="340" height="80" fill="#111827" rx="10" stroke="#10b981" stroke-width="1.5"/>
+  </g>
+  <rect x="30" y="472" width="340" height="30" fill="url(#green)" rx="10"/>
+  <rect x="30" y="492" width="340" height="10" fill="url(#green)"/>
+  <text x="200" y="492" text-anchor="middle" fill="#f0fdf4" font-size="13" font-weight="700">⑥  COMMIT</text>
+
+  <text x="50" y="520" fill="#22d3ee" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">feat: add user profile endpoint</text>
+  <text x="50" y="540" fill="#94a3b8" font-size="10">Conventional Commits: feat: · fix: · refactor: · docs: · test:</text>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- BOTTOM: Quick reference / alternate flows        -->
+  <!-- ════════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="580" width="1040" height="180" fill="#111827" rx="10" stroke="#334155" stroke-width="1"/>
+  </g>
+  <rect x="30" y="580" width="1040" height="30" fill="#1e293b" rx="10"/>
+  <rect x="30" y="600" width="1040" height="10" fill="#1e293b"/>
+  <text x="550" y="600" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="700">⌨️  COMMAND QUICK REFERENCE</text>
+
+  <!-- Commands grid -->
+  <rect x="50" y="622" width="310" height="52" fill="#0f172a" rx="6" stroke="#334155" stroke-width="0.5"/>
+  <text x="70" y="642" fill="#22d3ee" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">/review [path]</text>
+  <text x="70" y="660" fill="#64748b" font-size="10">Full parallel review (4 agents + orchestrator)</text>
+
+  <rect x="50" y="682" width="310" height="52" fill="#0f172a" rx="6" stroke="#334155" stroke-width="0.5"/>
+  <text x="70" y="702" fill="#22d3ee" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">/test [file]</text>
+  <text x="70" y="720" fill="#64748b" font-size="10">Manual test generation (also auto-spawns)</text>
+
+  <rect x="395" y="622" width="310" height="52" fill="#0f172a" rx="6" stroke="#334155" stroke-width="0.5"/>
+  <text x="415" y="642" fill="#22d3ee" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">/security [file]</text>
+  <text x="415" y="660" fill="#64748b" font-size="10">Quick security-only scan (1 agent)</text>
+
+  <rect x="395" y="682" width="310" height="52" fill="#0f172a" rx="6" stroke="#334155" stroke-width="0.5"/>
+  <text x="415" y="702" fill="#22d3ee" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">/document</text>
+  <text x="415" y="720" fill="#64748b" font-size="10">Update project docs &amp; architecture</text>
+
+  <rect x="740" y="622" width="310" height="52" fill="#0f172a" rx="6" stroke="#334155" stroke-width="0.5"/>
+  <text x="760" y="642" fill="#22d3ee" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">/dependencies</text>
+  <text x="760" y="660" fill="#64748b" font-size="10">Scan for outdated/vulnerable deps</text>
+
+  <rect x="740" y="682" width="310" height="52" fill="#0f172a" rx="6" stroke="#334155" stroke-width="0.5"/>
+  <text x="760" y="702" fill="#22d3ee" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">/upgrade [framework]</text>
+  <text x="760" y="720" fill="#64748b" font-size="10">Bump versions, fix breaking changes</text>
+
+  <!-- Footer -->
+  <text x="550" y="770" text-anchor="middle" fill="#334155" font-size="10">claude-code-setup · Start → Work → Test → Review → Document → Commit · Skills auto-activate · Tests auto-spawn</text>
+</svg>

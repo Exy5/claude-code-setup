@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 700" font-family="'Segoe UI',system-ui,-apple-system,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0%" stop-color="#0c1222"/><stop offset="100%" stop-color="#141e30"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b45309"/><stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1d4ed8"/><stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#047857"/><stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0e7490"/><stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b91c1c"/><stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <filter id="sh">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="aW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#94a3b8"/></marker>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#10b981"/></marker>
+    <marker id="aA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d97706"/></marker>
+    <marker id="aB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3b82f6"/></marker>
+    <marker id="aC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#06b6d4"/></marker>
+  </defs>
+
+  <rect width="1100" height="700" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="550" y="36" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="700">Skills Activation — Context-Based Auto-Loading</text>
+  <text x="550" y="54" text-anchor="middle" fill="#64748b" font-size="12">Skills activate by file globs · Multiple skills can be active in mixed-stack repos · No manual invocation needed</text>
+  <rect x="380" y="62" width="340" height="2" fill="url(#purple)" rx="1"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- LEFT: File being edited (trigger)            -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="30" y="85" width="260" height="490" fill="#111827" rx="10" stroke="#1e293b" stroke-width="1"/>
+  </g>
+  <rect x="30" y="85" width="260" height="30" fill="url(#green)" rx="10"/>
+  <rect x="30" y="105" width="260" height="10" fill="url(#green)"/>
+  <text x="160" y="105" text-anchor="middle" fill="#f0fdf4" font-size="13" font-weight="700">📄  FILE CONTEXT</text>
+  <text x="160" y="132" text-anchor="middle" fill="#94a3b8" font-size="11">The file you're working on</text>
+  <text x="160" y="146" text-anchor="middle" fill="#94a3b8" font-size="11">determines which skill activates</text>
+
+  <!-- Java files -->
+  <rect x="48" y="164" width="224" height="100" fill="#1a1a2e" rx="6" stroke="#ef4444" stroke-width="0.8"/>
+  <text x="60" y="184" fill="#fca5a5" font-size="11" font-weight="700">JAVA / SPRING</text>
+  <g font-family="'Cascadia Code','Fira Code',monospace" font-size="10" fill="#e2e8f0">
+    <text x="60" y="202">*.java</text>
+    <text x="60" y="218">pom.xml</text>
+    <text x="60" y="234">build.gradle</text>
+    <text x="60" y="250">build.gradle.kts</text>
+  </g>
+
+  <!-- Angular files -->
+  <rect x="48" y="276" width="224" height="116" fill="#1a1a2e" rx="6" stroke="#3b82f6" stroke-width="0.8"/>
+  <text x="60" y="296" fill="#93c5fd" font-size="11" font-weight="700">ANGULAR / TYPESCRIPT</text>
+  <g font-family="'Cascadia Code','Fira Code',monospace" font-size="10" fill="#e2e8f0">
+    <text x="60" y="314">*.component.ts</text>
+    <text x="60" y="330">*.service.ts</text>
+    <text x="60" y="346">*.module.ts</text>
+    <text x="60" y="362">*.directive.ts  *.pipe.ts</text>
+    <text x="60" y="378">angular.json</text>
+  </g>
+
+  <!-- React files -->
+  <rect x="48" y="404" width="224" height="84" fill="#1a1a2e" rx="6" stroke="#06b6d4" stroke-width="0.8"/>
+  <text x="60" y="424" fill="#67e8f9" font-size="11" font-weight="700">REACT / TYPESCRIPT</text>
+  <g font-family="'Cascadia Code','Fira Code',monospace" font-size="10" fill="#e2e8f0">
+    <text x="60" y="442">*.tsx  *.jsx</text>
+    <text x="60" y="458">next.config.*</text>
+    <text x="60" y="474">vite.config.*</text>
+  </g>
+
+  <!-- Mixed stack note -->
+  <rect x="48" y="500" width="224" height="60" fill="#1a1a2e" rx="6" stroke="#8b5cf6" stroke-width="0.8"/>
+  <text x="160" y="522" text-anchor="middle" fill="#c4b5fd" font-size="11" font-weight="700">MIXED-STACK REPOS</text>
+  <text x="160" y="540" text-anchor="middle" fill="#94a3b8" font-size="10">Skills don't compete — both</text>
+  <text x="160" y="554" text-anchor="middle" fill="#94a3b8" font-size="10">activate based on current file</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- ACTIVATION ARROWS                            -->
+  <!-- ════════════════════════════════════════════ -->
+  <!-- Java → java-conventions -->
+  <path d="M272 214 L358 178" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#aW)"/>
+  <!-- Angular → angular-conventions -->
+  <path d="M272 340 L358 340" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#aW)"/>
+  <!-- React → react-conventions -->
+  <path d="M272 446 L358 496" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#aW)"/>
+
+  <!-- "auto-activates" label -->
+  <text x="316" y="268" text-anchor="middle" fill="#64748b" font-size="9" transform="rotate(-12, 316, 268)">activates</text>
+  <text x="316" y="334" fill="#64748b" font-size="9">activates</text>
+  <text x="316" y="478" text-anchor="middle" fill="#64748b" font-size="9" transform="rotate(12, 316, 478)">activates</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- CENTER: 3 Skill cards                        -->
+  <!-- ════════════════════════════════════════════ -->
+
+  <!-- java-conventions -->
+  <g filter="url(#sh)">
+    <rect x="362" y="85" width="370" height="180" fill="#111827" rx="10" stroke="#ef4444" stroke-width="1"/>
+  </g>
+  <rect x="362" y="85" width="370" height="30" fill="url(#red)" rx="10"/>
+  <rect x="362" y="105" width="370" height="10" fill="url(#red)"/>
+  <text x="547" y="105" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">☕  java-conventions</text>
+
+  <text x="382" y="136" fill="#94a3b8" font-size="11" font-weight="600">SKILL.md</text>
+  <text x="450" y="136" fill="#64748b" font-size="10">— concise, auto-loaded</text>
+  <text x="382" y="154" fill="#94a3b8" font-size="11" font-weight="600">reference.md</text>
+  <text x="475" y="154" fill="#64748b" font-size="10">— detailed, read on demand</text>
+
+  <rect x="380" y="166" width="334" height="1" fill="#1e293b"/>
+
+  <text x="382" y="184" fill="#cbd5e1" font-size="10">Spring Bean lifecycle</text>
+  <text x="382" y="198" fill="#cbd5e1" font-size="10">@Transactional behavior &amp; pitfalls</text>
+  <text x="382" y="212" fill="#cbd5e1" font-size="10">JPA entity patterns, exception hierarchy</text>
+  <text x="382" y="226" fill="#cbd5e1" font-size="10">Testing annotations (JUnit, Mockito)</text>
+  <text x="382" y="248" fill="#475569" font-size="9">References docs/coding-standards.md for Java conventions</text>
+
+  <!-- angular-conventions -->
+  <g filter="url(#sh)">
+    <rect x="362" y="278" width="370" height="180" fill="#111827" rx="10" stroke="#3b82f6" stroke-width="1"/>
+  </g>
+  <rect x="362" y="278" width="370" height="30" fill="url(#blue)" rx="10"/>
+  <rect x="362" y="298" width="370" height="10" fill="url(#blue)"/>
+  <text x="547" y="298" text-anchor="middle" fill="#eff6ff" font-size="13" font-weight="700">🅰️  angular-conventions</text>
+
+  <text x="382" y="329" fill="#94a3b8" font-size="11" font-weight="600">SKILL.md</text>
+  <text x="450" y="329" fill="#64748b" font-size="10">— concise, auto-loaded</text>
+  <text x="382" y="347" fill="#94a3b8" font-size="11" font-weight="600">reference.md</text>
+  <text x="475" y="347" fill="#64748b" font-size="10">— detailed, read on demand</text>
+
+  <rect x="380" y="359" width="334" height="1" fill="#1e293b"/>
+
+  <text x="382" y="377" fill="#cbd5e1" font-size="10">Component lifecycle, signals vs RxJS</text>
+  <text x="382" y="391" fill="#cbd5e1" font-size="10">Change detection strategies</text>
+  <text x="382" y="405" fill="#cbd5e1" font-size="10">Routing, lazy loading, standalone components</text>
+  <text x="382" y="419" fill="#cbd5e1" font-size="10">RxJS operator selection &amp; patterns</text>
+  <text x="382" y="441" fill="#475569" font-size="9">References docs/coding-standards.md for Angular/TS conventions</text>
+
+  <!-- react-conventions -->
+  <g filter="url(#sh)">
+    <rect x="362" y="472" width="370" height="180" fill="#111827" rx="10" stroke="#06b6d4" stroke-width="1"/>
+  </g>
+  <rect x="362" y="472" width="370" height="30" fill="url(#cyan)" rx="10"/>
+  <rect x="362" y="492" width="370" height="10" fill="url(#cyan)"/>
+  <text x="547" y="492" text-anchor="middle" fill="#ecfeff" font-size="13" font-weight="700">⚛️  react-conventions</text>
+
+  <text x="382" y="523" fill="#94a3b8" font-size="11" font-weight="600">SKILL.md</text>
+  <text x="450" y="523" fill="#64748b" font-size="10">— concise, auto-loaded</text>
+  <text x="382" y="541" fill="#94a3b8" font-size="11" font-weight="600">reference.md</text>
+  <text x="475" y="541" fill="#64748b" font-size="10">— detailed, read on demand</text>
+
+  <rect x="380" y="553" width="334" height="1" fill="#1e293b"/>
+
+  <text x="382" y="571" fill="#cbd5e1" font-size="10">Hooks rules, rendering behavior</text>
+  <text x="382" y="585" fill="#cbd5e1" font-size="10">Server Components (RSC), React Query</text>
+  <text x="382" y="599" fill="#cbd5e1" font-size="10">useCallback/useMemo (when appropriate)</text>
+  <text x="382" y="613" fill="#cbd5e1" font-size="10">Common pitfalls &amp; composition patterns</text>
+  <text x="382" y="635" fill="#475569" font-size="9">References docs/coding-standards.md for React/TS conventions</text>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- RIGHT: Skill structure + shared reference    -->
+  <!-- ════════════════════════════════════════════ -->
+
+  <!-- Skill two-file structure -->
+  <g filter="url(#sh)">
+    <rect x="762" y="85" width="308" height="200" fill="#111827" rx="10" stroke="#1e293b" stroke-width="1"/>
+  </g>
+  <rect x="762" y="85" width="308" height="30" fill="url(#purple)" rx="10"/>
+  <rect x="762" y="105" width="308" height="10" fill="url(#purple)"/>
+  <text x="916" y="105" text-anchor="middle" fill="#faf5ff" font-size="13" font-weight="700">📐  SKILL STRUCTURE</text>
+
+  <text x="782" y="136" fill="#94a3b8" font-size="11">Each skill has two files:</text>
+
+  <rect x="782" y="148" width="270" height="50" fill="#1a1a2e" rx="5" stroke="#8b5cf6" stroke-width="0.5"/>
+  <text x="796" y="168" fill="#c4b5fd" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">SKILL.md</text>
+  <text x="796" y="186" fill="#94a3b8" font-size="10">Concise rules · Auto-loaded when</text>
+  <text x="796" y="196" fill="#94a3b8" font-size="10">file context matches globs</text>
+
+  <rect x="782" y="206" width="270" height="50" fill="#1a1a2e" rx="5" stroke="#475569" stroke-width="0.5"/>
+  <text x="796" y="226" fill="#94a3b8" font-size="12" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">reference.md</text>
+  <text x="796" y="244" fill="#94a3b8" font-size="10">Detailed patterns &amp; code examples</text>
+  <text x="796" y="254" fill="#94a3b8" font-size="10">Read on demand for deeper context</text>
+
+  <!-- Shared reference: coding-standards.md -->
+  <g filter="url(#sh)">
+    <rect x="762" y="305" width="308" height="162" fill="#111827" rx="10" stroke="#10b981" stroke-width="1"/>
+  </g>
+  <rect x="762" y="305" width="308" height="30" fill="url(#green)" rx="10"/>
+  <rect x="762" y="325" width="308" height="10" fill="url(#green)"/>
+  <text x="916" y="325" text-anchor="middle" fill="#f0fdf4" font-size="13" font-weight="700">📖  SHARED REFERENCE</text>
+
+  <text x="782" y="356" fill="#10b981" font-size="11" font-weight="600" font-family="'Cascadia Code','Fira Code',monospace">docs/coding-standards.md</text>
+  <text x="782" y="374" fill="#94a3b8" font-size="10">Single source of truth for all</text>
+  <text x="782" y="388" fill="#94a3b8" font-size="10">coding conventions across stacks</text>
+
+  <rect x="780" y="400" width="272" height="1" fill="#1e293b"/>
+
+  <text x="782" y="418" fill="#64748b" font-size="10">Change once → applies to:</text>
+  <text x="782" y="436" fill="#fca5a5" font-size="10">• java-conventions</text>
+  <text x="782" y="450" fill="#93c5fd" font-size="10">• angular-conventions</text>
+  <text x="782" y="464" fill="#67e8f9" font-size="10">• react-conventions</text>
+
+  <!-- Arrows from skills to shared reference -->
+  <path d="M732 200 L762 370" stroke="#10b981" stroke-width="1" stroke-dasharray="5,3" marker-end="url(#aG)"/>
+  <path d="M732 380 L762 390" stroke="#10b981" stroke-width="1" stroke-dasharray="5,3" marker-end="url(#aG)"/>
+  <path d="M732 560 L762 420" stroke="#10b981" stroke-width="1" stroke-dasharray="5,3" marker-end="url(#aG)"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- BOTTOM: How it works in practice             -->
+  <!-- ════════════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="762" y="488" width="308" height="166" fill="#111827" rx="10" stroke="#d97706" stroke-width="1"/>
+  </g>
+  <rect x="762" y="488" width="308" height="30" fill="url(#amber)" rx="10"/>
+  <rect x="762" y="508" width="308" height="10" fill="url(#amber)"/>
+  <text x="916" y="508" text-anchor="middle" fill="#0f172a" font-size="13" font-weight="700">💡  HOW IT WORKS</text>
+
+  <text x="782" y="540" fill="#cbd5e1" font-size="11">1. You open a file</text>
+  <text x="782" y="560" fill="#cbd5e1" font-size="11">2. Claude checks file globs</text>
+  <text x="782" y="580" fill="#cbd5e1" font-size="11">3. Matching SKILL.md loads</text>
+  <text x="800" y="596" fill="#94a3b8" font-size="10">automatically into context</text>
+  <text x="782" y="616" fill="#cbd5e1" font-size="11">4. reference.md available</text>
+  <text x="800" y="632" fill="#94a3b8" font-size="10">if Claude needs deeper detail</text>
+  <text x="782" y="648" fill="#f59e0b" font-size="10" font-weight="600">No manual /command needed</text>
+
+  <!-- Footer -->
+  <text x="550" y="690" text-anchor="middle" fill="#334155" font-size="10">claude-code-setup · Skills are knowledge, not actions · Auto-activate by file context · Each has concise SKILL.md + detailed reference.md</text>
+</svg>
