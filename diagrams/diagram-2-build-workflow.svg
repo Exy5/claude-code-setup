@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1320" font-family="'Segoe UI',system-ui,-apple-system,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0%" stop-color="#0c1222"/><stop offset="100%" stop-color="#141e30"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b45309"/><stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1d4ed8"/><stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#047857"/><stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6d28d9"/><stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b91c1c"/><stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0e7490"/><stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="rose" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9f1239"/><stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <filter id="sh">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="aW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#94a3b8"/></marker>
+    <marker id="aR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ef4444"/></marker>
+  </defs>
+
+  <rect width="1100" height="1320" fill="url(#bg)" rx="12"/>
+
+  <text x="550" y="36" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="700">Build Workflow — /build &lt;task&gt;</text>
+  <text x="550" y="54" text-anchor="middle" fill="#64748b" font-size="12">Full orchestrated development lifecycle · Orchestrator never writes code · Dynamic researcher count</text>
+  <rect x="380" y="62" width="340" height="2" fill="url(#amber)" rx="1"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TRIGGER                                 -->
+  <!-- ═══════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="350" y="80" width="400" height="44" fill="#111827" rx="10" stroke="#10b981" stroke-width="1.5"/>
+  </g>
+  <text x="550" y="108" text-anchor="middle" fill="#22d3ee" font-size="14" font-weight="700" font-family="'Cascadia Code','Fira Code',monospace">/build &lt;task description&gt;</text>
+
+  <path d="M550 124 L550 148" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PHASE 0: Clarification                  -->
+  <!-- ═══════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="200" y="152" width="700" height="140" fill="#111827" rx="10" stroke="#d97706" stroke-width="1.5"/>
+  </g>
+  <rect x="200" y="152" width="700" height="30" fill="url(#amber)" rx="10"/>
+  <rect x="200" y="172" width="700" height="10" fill="url(#amber)"/>
+  <text x="550" y="172" text-anchor="middle" fill="#0f172a" font-size="13" font-weight="700">PHASE 0 · CLARIFICATION  (orchestrator-main)</text>
+
+  <text x="220" y="204" fill="#94a3b8" font-size="11" font-weight="600">ALWAYS FIRST — ask all open questions before anything else:</text>
+  <text x="220" y="226" fill="#cbd5e1" font-size="10">• What exactly needs to be built?</text>
+  <text x="470" y="226" fill="#cbd5e1" font-size="10">• Tech stack / constraints?</text>
+  <text x="220" y="244" fill="#cbd5e1" font-size="10">• Existing code or greenfield?</text>
+  <text x="470" y="244" fill="#cbd5e1" font-size="10">• Non-functional requirements?</text>
+  <text x="720" y="244" fill="#cbd5e1" font-size="10">• Approach preferences?</text>
+  <text x="220" y="270" fill="#fbbf24" font-size="11" font-weight="700">Keep asking until NOTHING is unclear. Only proceed when fully answered.</text>
+  <text x="220" y="286" fill="#64748b" font-size="10">Orchestrator never writes code — pure coordinator throughout the entire build.</text>
+
+  <path d="M550 292 L550 316" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PHASE 1: Complexity Assessment           -->
+  <!-- ═══════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="280" y="320" width="540" height="100" fill="#111827" rx="10" stroke="#8b5cf6" stroke-width="1.5"/>
+  </g>
+  <rect x="280" y="320" width="540" height="30" fill="url(#purple)" rx="10"/>
+  <rect x="280" y="340" width="540" height="10" fill="url(#purple)"/>
+  <text x="550" y="340" text-anchor="middle" fill="#faf5ff" font-size="13" font-weight="700">PHASE 1 · COMPLEXITY ASSESSMENT</text>
+
+  <g font-size="11">
+    <text x="310" y="374" fill="#c4b5fd" font-weight="600">trivial</text>
+    <text x="370" y="374" fill="#94a3b8">→ skip research</text>
+    <text x="510" y="374" fill="#c4b5fd" font-weight="600">moderate</text>
+    <text x="580" y="374" fill="#94a3b8">→ 1 researcher</text>
+    <text x="310" y="396" fill="#c4b5fd" font-weight="600">complex</text>
+    <text x="370" y="396" fill="#94a3b8">→ 2 researchers</text>
+    <text x="510" y="396" fill="#c4b5fd" font-weight="600">highly complex</text>
+    <text x="610" y="396" fill="#94a3b8">→ 3 researchers</text>
+    <text x="310" y="414" fill="#64748b" font-size="10">Dynamic count — no wasted tokens on trivial tasks</text>
+  </g>
+
+  <path d="M550 420 L550 444" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PHASE 2: Research                        -->
+  <!-- ═══════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="200" y="448" width="700" height="130" fill="#111827" rx="10" stroke="#3b82f6" stroke-width="1.5"/>
+  </g>
+  <rect x="200" y="448" width="700" height="30" fill="url(#blue)" rx="10"/>
+  <rect x="200" y="468" width="700" height="10" fill="url(#blue)"/>
+  <text x="550" y="468" text-anchor="middle" fill="#eff6ff" font-size="13" font-weight="700">PHASE 2 · RESEARCH  (0–3 agents in parallel)</text>
+
+  <!-- 3 researcher boxes -->
+  <rect x="220" y="492" width="190" height="40" fill="#1a1a2e" rx="6" stroke="#334155" stroke-width="0.5"/>
+  <text x="315" y="516" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="600">🔬 researcher 1</text>
+
+  <rect x="455" y="492" width="190" height="40" fill="#1a1a2e" rx="6" stroke="#334155" stroke-width="0.5"/>
+  <text x="550" y="516" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="600">🔬 researcher 2</text>
+
+  <rect x="690" y="492" width="190" height="40" fill="#1a1a2e" rx="6" stroke="#334155" stroke-width="0.5"/>
+  <text x="785" y="516" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="600">🔬 researcher 3</text>
+
+  <text x="220" y="552" fill="#94a3b8" font-size="10">Each independently analyzes the full problem and proposes a complete solution.</text>
+  <text x="220" y="568" fill="#fbbf24" font-size="10" font-weight="600">Majority principle → winning approach selected.</text>
+  <text x="600" y="568" fill="#64748b" font-size="10">All read-only.</text>
+
+  <path d="M550 578 L550 598" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+  <text x="570" y="594" fill="#64748b" font-size="9">synthesize → tasks/todo.md</text>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PHASE 2b: Architect Review               -->
+  <!-- ═══════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="280" y="602" width="540" height="100" fill="#111827" rx="10" stroke="#ef4444" stroke-width="1"/>
+  </g>
+  <rect x="280" y="602" width="540" height="30" fill="#1e293b" rx="10"/>
+  <rect x="280" y="622" width="540" height="10" fill="#1e293b"/>
+  <text x="550" y="622" text-anchor="middle" fill="#fca5a5" font-size="13" font-weight="700">ARCHITECT REVIEW  ·  reviewer-architect</text>
+
+  <text x="300" y="652" fill="#94a3b8" font-size="10">Reviews tasks/todo.md for feasibility and design concerns</text>
+  <text x="300" y="670" fill="#94a3b8" font-size="10">Fundamental flaw? → re-research. Remaining questions? → STOP and ask developer.</text>
+  <text x="300" y="688" fill="#94a3b8" font-size="10">Proceed only when fully resolved. Branch name determined (feat/fix/etc.).</text>
+
+  <path d="M550 702 L550 726" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PHASE 3: Implementation Stream           -->
+  <!-- ═══════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="100" y="730" width="900" height="310" fill="#111827" rx="10" stroke="#10b981" stroke-width="1.5"/>
+  </g>
+  <rect x="100" y="730" width="900" height="30" fill="url(#green)" rx="10"/>
+  <rect x="100" y="750" width="900" height="10" fill="url(#green)"/>
+  <text x="550" y="750" text-anchor="middle" fill="#f0fdf4" font-size="13" font-weight="700">PHASE 3 · IMPLEMENTATION STREAM  ·  git checkout -b feat/&lt;name&gt;</text>
+
+  <!-- Developer agents -->
+  <text x="120" y="784" fill="#94a3b8" font-size="11" font-weight="600">MAX 3 DEVELOPER AGENTS CONCURRENTLY:</text>
+
+  <rect x="120" y="796" width="260" height="44" fill="#1a1a2e" rx="6" stroke="#10b981" stroke-width="0.8"/>
+  <text x="250" y="822" text-anchor="middle" fill="#6ee7b7" font-size="12" font-weight="700">👨‍💻 developer A</text>
+
+  <rect x="420" y="796" width="260" height="44" fill="#1a1a2e" rx="6" stroke="#10b981" stroke-width="0.8"/>
+  <text x="550" y="822" text-anchor="middle" fill="#6ee7b7" font-size="12" font-weight="700">👨‍💻 developer B</text>
+
+  <rect x="720" y="796" width="260" height="44" fill="#1a1a2e" rx="6" stroke="#10b981" stroke-width="0.8"/>
+  <text x="850" y="822" text-anchor="middle" fill="#6ee7b7" font-size="12" font-weight="700">👨‍💻 developer C</text>
+
+  <text x="120" y="862" fill="#94a3b8" font-size="10">Orchestrator assigns tasks and is sole writer of tasks/todo.md — no race conditions.</text>
+
+  <!-- Per-task cycle -->
+  <text x="120" y="890" fill="#f8fafc" font-size="11" font-weight="700">PER-TASK CYCLE (orchestrator coordinates):</text>
+
+  <g font-size="10">
+    <rect x="120" y="902" width="860" height="22" fill="#0f172a" rx="4"/>
+    <text x="135" y="917" fill="#fbbf24" font-weight="700">1.</text>
+    <text x="152" y="917" fill="#cbd5e1">Scoped review — only relevant reviewers: quality (always) · security (if auth/input) · perf (if DB/loops) · architect (if new classes)</text>
+
+    <rect x="120" y="928" width="860" height="22" fill="#0f172a" rx="4"/>
+    <text x="135" y="943" fill="#fbbf24" font-weight="700">2.</text>
+    <text x="152" y="943" fill="#fca5a5">CRITICAL/MAJOR → back to developer to fix.</text>
+    <text x="420" y="943" fill="#94a3b8">MINOR/INFO/NIT → noted in tasks/todo.md.</text>
+
+    <rect x="120" y="954" width="860" height="22" fill="#0f172a" rx="4"/>
+    <text x="135" y="969" fill="#fbbf24" font-weight="700">3.</text>
+    <text x="152" y="969" fill="#cbd5e1">Spawn documenter (parallel with next task) · Conventional Commit · Update tasks/todo.md status.</text>
+
+    <rect x="120" y="980" width="860" height="22" fill="#0f172a" rx="4"/>
+    <text x="135" y="995" fill="#fbbf24" font-weight="700">4.</text>
+    <text x="152" y="995" fill="#cbd5e1">Next unblocked task → fill free developer slot. Finished tasks unblock dependents immediately.</text>
+  </g>
+
+  <!-- Stream note -->
+  <text x="120" y="1028" fill="#10b981" font-size="10" font-weight="600">Implementation is a stream — no batch waiting. Progress visible in tasks/todo.md.</text>
+
+  <path d="M550 1040 L550 1062" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PHASE 4: Final Review                    -->
+  <!-- ═══════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="200" y="1066" width="700" height="108" fill="#111827" rx="10" stroke="#ef4444" stroke-width="1.5"/>
+  </g>
+  <rect x="200" y="1066" width="700" height="30" fill="url(#red)" rx="10"/>
+  <rect x="200" y="1086" width="700" height="10" fill="url(#red)"/>
+  <text x="550" y="1086" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">PHASE 4 · FINAL REVIEW</text>
+
+  <rect x="220" y="1106" width="320" height="34" fill="#1a1a2e" rx="6" stroke="#334155" stroke-width="0.5"/>
+  <text x="380" y="1128" text-anchor="middle" fill="#f8fafc" font-size="11" font-weight="600">🔗 integration-reviewer (cross-cutting)</text>
+
+  <rect x="560" y="1106" width="320" height="34" fill="#1a1a2e" rx="6" stroke="#334155" stroke-width="0.5"/>
+  <text x="720" y="1128" text-anchor="middle" fill="#f8fafc" font-size="11" font-weight="600">🔍 orchestrator-review (full /review)</text>
+
+  <text x="470" y="1118" text-anchor="middle" fill="#64748b" font-size="9">parallel</text>
+
+  <text x="220" y="1160" fill="#fca5a5" font-size="10" font-weight="600">FAIL → targeted developer fixes.</text>
+  <text x="520" y="1160" fill="#6ee7b7" font-size="10" font-weight="600">PASS → report to developer + merge instructions.</text>
+
+  <path d="M550 1174 L550 1196" stroke="#94a3b8" stroke-width="2" marker-end="url(#aW)"/>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PHASE 5: Self-Improvement                -->
+  <!-- ═══════════════════════════════════════ -->
+  <g filter="url(#sh)">
+    <rect x="280" y="1200" width="540" height="88" fill="#111827" rx="10" stroke="#06b6d4" stroke-width="1"/>
+  </g>
+  <rect x="280" y="1200" width="540" height="30" fill="url(#cyan)" rx="10"/>
+  <rect x="280" y="1220" width="540" height="10" fill="url(#cyan)"/>
+  <text x="550" y="1220" text-anchor="middle" fill="#ecfeff" font-size="13" font-weight="700">PHASE 5 · SELF-IMPROVEMENT</text>
+
+  <text x="300" y="1252" fill="#cbd5e1" font-size="10">Any corrections from developer during build → written to tasks/lessons.md</text>
+  <text x="300" y="1268" fill="#cbd5e1" font-size="10">Categorized by language/domain · Suggests promoting to coding-standards.md</text>
+  <text x="300" y="1284" fill="#64748b" font-size="10">The system learns from every build cycle.</text>
+
+  <text x="550" y="1312" text-anchor="middle" fill="#334155" font-size="10">claude-code-setup · /build orchestrates the full lifecycle · orchestrator never writes code · feature branch + Conventional Commits</text>
+</svg>

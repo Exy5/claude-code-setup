@@ -59,7 +59,7 @@ cd ~/projects/my-app
 claude
 ```
 
-Everything loads automatically. No per-project setup needed. Claude now has your coding standards, agents, skills, and commands available in every session.
+Everything loads automatically. No per-project setup needed.
 
 ### For new projects
 
@@ -77,24 +77,64 @@ Run `/document` to generate architecture documentation. Claude analyzes the code
 
 | Command | What It Does |
 |---------|-------------|
-| `/review` | Full code review — 4 agents in parallel, severity-sorted report saved to `reviews/` |
+| `/build <task>` | Full orchestrated workflow — research, parallel implementation, review, document, commit |
+| `/review` | Code review — up to 4 agents in parallel, severity-sorted report saved to `reviews/` |
 | `/review src/auth/` | Scoped review of a specific path |
-| `/test UserService.java` | Generate unit tests for a file (90%+ coverage target) |
 | `/security AuthService.java` | Quick security-focused review |
-| `/document` | Generate project architecture documentation |
+| `/test UserService.java` | Generate unit tests for existing code |
+| `/document` | Generate or update project architecture documentation |
 | `/dependencies` | Scan for vulnerabilities, unused packages, and dependency problems |
 | `/upgrade` | Upgrade dependencies and handle breaking changes |
-| `/upgrade angular` | Upgrade a specific dependency |
 
 ### Agents
 
 ![Agent Ecosystem](diagrams/diagram-3-agent-ecosystem.svg)
 
+**Build Workflow Agents**
+
+| Agent | Role | Access |
+|-------|------|--------|
+| `orchestrator-main` | Plans, delegates, coordinates — never writes code | Read, Write, Glob, Grep, Agent |
+| `researcher` | Analyzes problem and proposes full solution (3 spawned in parallel) | Read-only |
+| `developer` | Implements one task + writes tests | Read, Write, Glob, Grep, Bash |
+| `integration-reviewer` | Post-build cross-cutting validation | Read-only + Bash |
+
+**Review Agents**
+
+| Agent | Focus | Access |
+|-------|-------|--------|
+| `orchestrator-review` | Coordinates all reviewers, saves report | Read, Write, Glob, Grep, Agent |
+| `reviewer-architect` | SOLID, layering, scalability, design | Read-only |
+| `reviewer-security` | OWASP, secrets, auth, supply chain, IaC | Read-only |
+| `reviewer-quality` | Code smells, naming, DRY, complexity | Read-only |
+| `reviewer-performance` | N+1, leaks, bundle size, Web Vitals | Read-only |
+
+**Utility Agents**
+
+| Agent | Trigger | Access |
+|-------|---------|--------|
+| `documenter` | Auto after each task completes, or `/document` | Read, Write, Glob, Grep |
+| `test-writer` | `/test` — manual, for existing code | Read, Write, Glob, Grep |
+| `dependency-scanner` | `/dependencies` | Read-only + Bash |
+| `upgrader` | `/upgrade` | Read, Write, Glob, Grep, Bash |
+
+### Build Workflow
+
+![Build Workflow](diagrams/diagram-2-build-workflow.svg)
+
+When you type `/build <task>`, the full orchestrated workflow runs:
+
+1. **Research** — 3 Researcher agents analyze the problem independently in parallel. Majority principle picks the winning approach.
+2. **Plan** — findings are synthesized into `tasks/todo.md`. Architect reviews the plan. All open questions are surfaced and answered before any code is written.
+3. **Implementation stream** — up to 3 Developer agents run concurrently. Each picks the next unblocked task from `tasks/todo.md`. No waiting for unrelated tasks.
+4. **Per-task cycle** — when a task completes: scoped review → fixes if needed → documentation → commit → next unblocked task starts.
+5. **Integration review** — after all tasks are done, a final cross-cutting check validates everything fits together.
+
 ### Review Workflow
 
-![Review Workflow](diagrams/diagram-2-review-workflow.svg)
+![Review Workflow](diagrams/diagram-7-review-workflow.svg)
 
-When you type `/review`, the orchestrator spawns 4 specialized reviewers in parallel. Each focuses on one concern (architecture, security, quality, performance), and the orchestrator merges their findings into a single severity-sorted report saved to `reviews/<timestamp>-review.md`.
+When you type `/review`, the `orchestrator-review` spawns up to 4 specialized reviewers in parallel. Each focuses on one concern and the orchestrator merges findings into a single severity-sorted report saved to `reviews/<timestamp>-review.md`.
 
 ### Skills (auto-activate by file type)
 
@@ -110,13 +150,11 @@ When you type `/review`, the orchestrator spawns 4 specialized reviewers in para
 
 ### Single Source of Truth
 
-![Single Source of Truth](diagrams/diagram-5-single-source-of-truth.svg)
-
-Conventions and definitions live in one place to avoid redundancy:
+![Single Source of Truth](diagrams/diagram-7-single-source-of-truth.svg)
 
 | What | Lives in | Referenced by |
 |------|----------|---------------|
-| Coding conventions | `docs/coding-standards.md` | Skills, quality reviewer |
+| Coding conventions | `docs/coding-standards.md` | Skills, reviewer agents, developer agent |
 | Severity scale | `docs/review-severity-scale.md` | All reviewer agents |
 | Framework knowledge | `skills/*/SKILL.md` | Auto-loaded by file type |
 | Workflow & philosophy | `global/CLAUDE.md` | Every session |
@@ -129,52 +167,61 @@ Change a convention once → everything picks it up.
 claude-code-setup/
 │
 ├── global/
-│   └── CLAUDE.md                    → ~/.claude/CLAUDE.md
-│                                      Workflow, philosophy, kickoff questions
+│   └── CLAUDE.md                      → ~/.claude/CLAUDE.md
+│                                        Workflow, philosophy, kickoff questions
 │
-├── agents/                          → ~/.claude/agents/
-│   ├── orchestrator-review.md         Coordinates 4 reviewers in parallel
-│   ├── reviewer-architect.md          Architecture, SOLID, layering, scalability
-│   ├── reviewer-security.md           OWASP, secrets, auth, supply chain, IaC
-│   ├── reviewer-quality.md            Code smells, naming, DRY, complexity
-│   ├── reviewer-performance.md        N+1, leaks, bundle size, Web Vitals
-│   ├── test-writer.md                 Auto-spawns after code completion
-│   ├── documenter.md                  Project documentation generator
-│   ├── dependency-scanner.md          Dependency vulnerability and health scanner
-│   └── upgrader.md                    Dependency version upgrader
+├── agents/                            → ~/.claude/agents/
+│   ├── orchestrator-main.md             Master task orchestrator (/build)
+│   ├── orchestrator-review.md           Coordinates code review (/review)
+│   ├── researcher.md                    Full-problem analysis (3 spawned in parallel)
+│   ├── developer.md                     Implements task + writes tests
+│   ├── integration-reviewer.md          Post-build cross-cutting validation
+│   ├── reviewer-architect.md            Architecture, SOLID, scalability
+│   ├── reviewer-security.md             OWASP, secrets, auth, supply chain, IaC
+│   ├── reviewer-quality.md              Code smells, naming, DRY, complexity
+│   ├── reviewer-performance.md          N+1, leaks, bundle size, Web Vitals
+│   ├── documenter.md                    Project documentation generator
+│   ├── test-writer.md                   Manual test generation for existing code
+│   ├── dependency-scanner.md            Dependency vulnerability and health scanner
+│   └── upgrader.md                      Dependency version upgrader
 │
-├── skills/                          → ~/.claude/skills/
-│   ├── java-conventions/              Spring lifecycle, JPA, transactions
-│   ├── angular-conventions/           Signals, RxJS, change detection
-│   └── react-conventions/             Hooks, rendering, Server Components
+├── skills/                            → ~/.claude/skills/
+│   ├── java-conventions/                Spring lifecycle, JPA, transactions
+│   ├── angular-conventions/             Signals, RxJS, change detection
+│   └── react-conventions/               Hooks, rendering, Server Components
 │
-├── commands/                        → ~/.claude/commands/
-│   ├── review.md                      /review
-│   ├── test.md                        /test
-│   ├── security.md                    /security
-│   ├── document.md                    /document
-│   ├── dependencies.md                /dependencies
-│   └── upgrade.md                     /upgrade
+├── commands/                          → ~/.claude/commands/
+│   ├── build.md                         /build — full orchestrated build workflow
+│   ├── review.md                        /review
+│   ├── security.md                      /security
+│   ├── test.md                          /test
+│   ├── document.md                      /document
+│   ├── dependencies.md                  /dependencies
+│   └── upgrade.md                       /upgrade
 │
-├── docs/                            → ~/.claude/docs/
-│   ├── coding-standards.md            Single source of truth for all conventions
-│   └── review-severity-scale.md       Severity definitions for all reviewers
+├── docs/                              → ~/.claude/docs/
+│   ├── coding-standards.md              Single source of truth for all conventions
+│   ├── review-severity-scale.md         Severity definitions for all reviewers
+│   └── future-improvements.md           Roadmap
 │
-├── diagrams/                        Architecture and workflow visualizations
+├── templates/
+│   ├── tasks/
+│   │   ├── todo.md                      Task breakdown template for /build
+│   │   └── lessons.md                   Self-improvement log template
+│   └── CLAUDE.local.md                  Template for private overrides
 │
-└── templates/
-    └── CLAUDE.local.md                Template for private overrides
+└── diagrams/                          Architecture and workflow visualizations
 ```
 
 ### How It Works
 
-The install script creates symlinks from this repo into `~/.claude/`. Claude Code automatically loads everything from `~/.claude/` at session start. Since the symlinks point back to this repo, you can update your configuration by editing files here and the changes apply immediately — no reinstall needed.
+The install script creates symlinks from this repo into `~/.claude/`. Claude Code automatically loads everything from `~/.claude/` at session start. Since symlinks point back to this repo, editing files here applies immediately — no reinstall needed.
 
 ### Scope Precedence (highest → lowest)
 
 1. **CLAUDE.local.md** — private overrides, never committed
-2. **Project .claude/CLAUDE.md** — project-specific rules (per-repo)
-3. **~/.claude/CLAUDE.md** — personal baseline (this repo)
+2. **Project `.claude/CLAUDE.md`** — project-specific rules (per-repo)
+3. **`~/.claude/CLAUDE.md`** — personal baseline (this repo)
 
 ## Private Overrides
 

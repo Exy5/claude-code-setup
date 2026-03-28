@@ -1,6 +1,6 @@
 # Architecture Description for Visualization
 
-Use this document to create SVG architecture diagrams for the README.
+Use this document to generate SVG diagrams for the README. Each section describes one diagram.
 
 ---
 
@@ -8,67 +8,210 @@ Use this document to create SVG architecture diagrams for the README.
 
 ### What to visualize
 
-The claude-code-setup is a global configuration repo that lives on the developer's machine and is symlinked into `~/.claude/`. Claude Code automatically loads everything from `~/.claude/` at session start, making the full configuration available in any project without per-project setup.
+The repo lives on the developer's machine and is symlinked into `~/.claude/`. Claude Code loads everything from `~/.claude/` at session start, making the full configuration available in every project.
 
 ### Components
 
-**Source (this repo: `claude-code-setup/`):**
-- `global/CLAUDE.md` — personal baseline (workflow, philosophy, kickoff questions)
-- `agents/` — 9 agent definitions (orchestrator, 4 reviewers, test-writer, documenter, dependency-scanner, upgrader)
-- `skills/` — 3 framework knowledge packs (Java/Spring, Angular, React), each with a concise SKILL.md and detailed reference.md
-- `commands/` — 6 slash commands (/review, /test, /security, /document, /dependencies, /upgrade)
-- `docs/` — single source of truth files (coding-standards.md, review-severity-scale.md)
-- `templates/` — CLAUDE.local.md template for private overrides
+**Source repo (`claude-code-setup/`):**
+- `global/CLAUDE.md` — workflow, philosophy, kickoff questions
+- `agents/` — 13 agent definitions
+- `skills/` — 3 framework knowledge packs (Java, Angular, React)
+- `commands/` — 7 slash commands
+- `docs/` — single source of truth (coding standards, severity scale)
+- `templates/` — task and local override templates
 
 **Target (`~/.claude/` via symlinks):**
-- `CLAUDE.md` ← symlink to `global/CLAUDE.md`
-- `agents/` ← symlink to `agents/`
-- `skills/` ← symlink to `skills/`
-- `commands/` ← symlink to `commands/`
-- `docs/` ← symlink to `docs/`
-- `CLAUDE.local.md` ← copied once from template (not symlinked, never committed)
+- `CLAUDE.md` ← symlink → `global/CLAUDE.md`
+- `agents/` ← symlink → `agents/`
+- `skills/` ← symlink → `skills/`
+- `commands/` ← symlink → `commands/`
+- `docs/` ← symlink → `docs/`
+- `CLAUDE.local.md` ← copied once from template (never symlinked, never committed)
 
-**Scope Precedence (show as layered/stacked, highest on top):**
-1. `CLAUDE.local.md` — private overrides (highest priority)
+**Scope Precedence (layered, highest on top):**
+1. `CLAUDE.local.md` — private overrides
 2. Project `.claude/CLAUDE.md` — project-specific rules
-3. `~/.claude/CLAUDE.md` — personal baseline (lowest priority)
+3. `~/.claude/CLAUDE.md` — personal baseline
 
-Higher scope wins on conflicts.
+Higher scope wins on conflict.
 
-### Relationships
-
-- The install script creates symlinks from the repo into `~/.claude/`
-- Claude Code loads from `~/.claude/` at every session start
-- Since symlinks point back to the repo, editing the repo updates the config immediately
-- Skills auto-activate based on file type (globs)
-- Agents and docs reference `docs/coding-standards.md` and `docs/review-severity-scale.md` as single sources of truth
+### Key relationships
+- Editing repo files takes effect immediately (symlinks — no reinstall needed)
+- Skills auto-activate by file type (globs match current file being edited)
+- All agents and skills reference `docs/` as single source of truth
 
 ---
 
-## Diagram 2: Review Workflow (Multi-Agent)
+## Diagram 2: Build Workflow (`/build`)
 
 ### What to visualize
 
-When the developer types `/review`, a multi-agent review workflow is triggered.
+The full orchestrated development lifecycle triggered by `/build <task>`. The main Claude session is a pure coordinator — it never writes code.
+
+### Flow (show as a vertical swimlane or flowchart)
+
+```
+Developer types: /build <task description>
+        │
+        ▼
+┌─────────────────────────────────────────────────────┐
+│  orchestrator-main                                   │
+│  Phase 0: Clarification (ALWAYS first)               │
+│                                                     │
+│  Ask all open questions before anything else:        │
+│  → What exactly needs to be built?                  │
+│  → Tech stack / constraints?                        │
+│  → Does this touch existing code or is it greenfield?│
+│  → Any non-functional requirements? (perf, scale)   │
+│  → Any preferences on approach or patterns?         │
+│                                                     │
+│  Keep asking until NOTHING is unclear.              │
+│  Only proceed when developer has answered fully.    │
+└─────────────────────────────────────────────────────┘
+        │
+        ▼ Phase 1: Complexity Assessment
+┌─────────────────────────────────────────────┐
+│  Based on clarified requirements:            │
+│  → trivial: skip research entirely          │
+│  → moderate: spawn 1 researcher             │
+│  → complex: spawn 2 researchers             │
+│  → highly complex: spawn 3 researchers      │
+└─────────────────────────────────────────────┘
+        │
+        ▼ Phase 2: Research (0–3 agents, based on above)
+┌──────────────────────────────────────────────┐
+│  1–3 Researcher agents spawn in PARALLEL      │
+│  Each independently analyzes the full problem │
+│  and proposes a complete solution             │
+│                                              │
+│  researcher 1 ──┐                            │
+│  researcher 2 ──┼──► majority principle      │
+│  researcher 3 ──┘    → winning approach      │
+└──────────────────────────────────────────────┘
+        │
+        ▼ Synthesize into tasks/todo.md (orchestrator writes)
+        │
+        ▼ Phase 3: Architect Review
+┌──────────────────────────────────────────────┐
+│  reviewer-architect reviews tasks/todo.md     │
+│  → concerns and remaining questions surfaced  │
+│  → fundamental flaw? re-research             │
+│  → STOP: present any remaining questions     │
+│  → proceed only when fully resolved          │
+│  → branch name determined (feat/fix/etc.)    │
+└──────────────────────────────────────────────┘
+        │
+        ▼ Phase 3: Branch + Implementation Stream
+┌──────────────────────────────────────────────────────┐
+│  git checkout -b feat/<name>                          │
+│                                                      │
+│  Max 3 Developer agents running concurrently          │
+│  Orchestrator assigns tasks, agents report back       │
+│  Orchestrator is sole writer of tasks/todo.md         │
+│                                                      │
+│  developer A ──► reports done ──► review cycle ──►┐  │
+│  developer B ──► reports done ──► review cycle ──►┤  │
+│  developer C ──► reports done ──► review cycle ──►┘  │
+│                                                      │
+│  Per-task cycle (orchestrator coordinates):          │
+│  1. Scoped review (only relevant reviewers)          │
+│     → quality: always                               │
+│     → security: if endpoints/auth/input             │
+│     → performance: if DB/loops/rendering            │
+│     → architect: if new classes/cross-layer         │
+│     → CRITICAL/MAJOR: back to developer to fix      │
+│     → MINOR/INFO/NIT: note in tasks/todo.md         │
+│  2. Spawn documenter (parallel with next task)       │
+│  3. Commit (Conventional Commit, one per task)       │
+│  4. Update tasks/todo.md status + Progress           │
+│  5. Next unblocked task → fill free slot             │
+└──────────────────────────────────────────────────────┘
+        │
+        ▼ Phase 4: Final Review
+┌──────────────────────────────────────────────┐
+│  integration-reviewer (cross-cutting)  ──────┤ parallel
+│  orchestrator-review (full /review)    ──────┘
+│  → security always covered                   │
+│  → FAIL: targeted developer fixes            │
+│  → PASS: report to developer                 │
+│          + merge instructions                │
+└──────────────────────────────────────────────┘
+        │
+        ▼ Phase 5: Self-Improvement
+┌──────────────────────────────────────────────┐
+│  Any corrections from developer during build  │
+│  → written to tasks/lessons.md               │
+│  → categorized by language/domain            │
+│  → suggest promoting to coding-standards.md  │
+└──────────────────────────────────────────────┘
+```
+
+### Key design points to highlight
+- Dynamic researcher count (0–3) based on complexity — no wasted tokens on trivial tasks
+- Orchestrator is the sole writer of `tasks/todo.md` — no race conditions
+- Implementation is a stream — finished task unblocks dependents immediately, no batch waiting
+- Scoped reviews per task — only relevant reviewers spawned
+- Full `/review` always runs at the end — security is never skipped
+- Feature branch always created — clean rollback path, Conventional Commit naming
+- Progress visible in `tasks/todo.md` — developer can track without interrupting the workflow
+- Corrections captured into `tasks/lessons.md` automatically
+
+---
+
+## Diagram 3: Agent Ecosystem
+
+### What to visualize
+
+All 13 agents, grouped by purpose, with their tool access level and trigger mechanism.
+
+### Build Workflow Agents (triggered by `/build`)
+- **orchestrator-main** — master coordinator. Tools: Read, Write, Glob, Grep, Agent. Never writes code.
+- **researcher** — full-problem analysis. 3 spawned in parallel. Tools: Read-only.
+- **developer** — implements one task + writes tests. Tools: Read, Write, Glob, Grep, Bash.
+- **integration-reviewer** — post-build cross-cutting check. Tools: Read-only + Bash (for compile checks).
+
+### Review Agents (triggered by `/review`)
+- **orchestrator-review** — coordinates reviewers, saves report. Tools: Read, Write, Glob, Grep, Agent.
+- **reviewer-architect** — SOLID, layering, scalability. Tools: Read-only.
+- **reviewer-security** — OWASP, secrets, auth, supply chain, IaC. Tools: Read-only.
+- **reviewer-quality** — code smells, naming, DRY. Tools: Read-only.
+- **reviewer-performance** — N+1, leaks, bundle size, Web Vitals. Tools: Read-only.
+
+### Utility Agents
+- **documenter** — auto after each build task + on-demand via `/document`. Tools: Read, Write, Glob, Grep.
+- **test-writer** — manual only via `/test` for existing code. Tools: Read, Write, Glob, Grep.
+- **dependency-scanner** — on-demand via `/dependencies`. Tools: Read-only + Bash.
+- **upgrader** — on-demand via `/upgrade`. Tools: Read, Write, Glob, Grep, Bash.
+
+### Access level grouping (for visual legend)
+- **Read-only:** researcher, reviewer-architect, reviewer-security, reviewer-quality, reviewer-performance, integration-reviewer (+ Bash)
+- **Read + Write:** orchestrator-main, orchestrator-review, documenter, test-writer
+- **Read + Write + Bash:** developer, upgrader, dependency-scanner (read + Bash)
+
+---
+
+## Diagram 4: Review Workflow (`/review`)
+
+### What to visualize
+
+The focused multi-agent code review triggered manually by the developer.
 
 ### Flow
 
-1. **Developer** types `/review` (or `/review src/auth/`)
-2. **Command** (`commands/review.md`) triggers the **Orchestrator** agent
-3. **Orchestrator** (`orchestrator-review.md`) determines scope (changed files or specified path)
-4. **Orchestrator** spawns **4 reviewer agents in parallel**:
-   - `reviewer-architect` — SOLID, layering, scalability, design
-   - `reviewer-security` — OWASP, injection, secrets, supply chain, IaC
-   - `reviewer-quality` — code smells, naming, DRY, complexity
-   - `reviewer-performance` — N+1, memory leaks, bundle size, Web Vitals
-5. All 4 reviewers are **read-only** (Read, Glob, Grep tools only)
-6. All 4 reviewers reference `docs/review-severity-scale.md` for consistent severity ratings
-7. All 4 reviewers reference `docs/coding-standards.md` for convention checks
-8. **Orchestrator** collects all reports, deduplicates, sorts by severity
-9. **Orchestrator** saves the consolidated report to `reviews/<timestamp>-review.md`
-10. **Developer** reviews the report and fixes issues with the main Claude session
+1. Developer types `/review` (or `/review src/auth/`)
+2. `commands/review.md` triggers `orchestrator-review`
+3. Orchestrator determines scope (recent changes or specified path)
+4. Orchestrator spawns all 4 reviewers **in parallel**:
+   - `reviewer-architect` — reads `docs/coding-standards.md` + `docs/review-severity-scale.md`
+   - `reviewer-security` — reads `docs/review-severity-scale.md`
+   - `reviewer-quality` — reads `docs/coding-standards.md` + `docs/review-severity-scale.md`
+   - `reviewer-performance` — reads `docs/review-severity-scale.md`
+5. All reviewers are read-only — cannot modify code
+6. Orchestrator collects all reports, deduplicates, sorts by severity (CRITICAL first)
+7. Orchestrator saves consolidated report to `reviews/<timestamp>-review.md`
+8. Developer reads report, fixes issues with main Claude session
 
-### Severity Scale (used in report output)
+### Severity levels in report output
 - 🔴 CRITICAL — must fix before merge
 - 🟠 MAJOR — should fix before merge
 - 🟡 MINOR — recommended fix
@@ -77,91 +220,32 @@ When the developer types `/review`, a multi-agent review workflow is triggered.
 
 ---
 
-## Diagram 3: Agent Ecosystem
+## Diagram 5: Skills Activation
 
 ### What to visualize
 
-All 9 agents, their triggers, their tool access, and their relationships.
+Skills auto-activate based on which file type is currently being worked on. Multiple skills can be active simultaneously in mixed-stack projects.
 
-### Agents grouped by purpose
-
-**Review Agents (on-demand via /review):**
-- orchestrator-review — coordinates, spawns others, writes report (Read, Write, Glob, Grep, Agent)
-- reviewer-architect — architecture & design (Read, Glob, Grep)
-- reviewer-security — security vulnerabilities (Read, Glob, Grep)
-- reviewer-quality — code quality (Read, Glob, Grep)
-- reviewer-performance — runtime efficiency (Read, Glob, Grep)
-
-**Generation Agents (automatic or on-demand):**
-- test-writer — auto-spawns after code completion, writes test files (Read, Write, Glob, Grep)
-- documenter — on-demand via /document, writes project docs (Read, Write, Glob, Grep)
-
-**Maintenance Agents (on-demand):**
-- dependency-scanner — on-demand via /dependencies, scans for issues (Read, Glob, Grep, Bash)
-- upgrader — on-demand via /upgrade, bumps versions and fixes breaking changes (Read, Write, Glob, Grep, Bash)
-
-### Access levels
-- **Read-only:** All 4 reviewers (cannot modify code)
-- **Read + Write:** test-writer, documenter, upgrader, orchestrator (can create/modify files)
-- **Bash access:** dependency-scanner, upgrader (can run CLI tools like npm audit, mvn)
-
----
-
-## Diagram 4: Skills Activation
-
-### What to visualize
-
-Skills auto-activate based on which files are being worked on. In a mixed-stack project, multiple skills can be active.
-
-### Skills and their triggers
+### Skills and their file triggers
 
 **java-conventions:**
 - Activates for: `*.java`, `pom.xml`, `build.gradle`, `build.gradle.kts`
-- Teaches: Spring Bean lifecycle, @Transactional behavior, JPA pitfalls, exception handling, testing annotations
-- References `docs/coding-standards.md` for Java conventions
+- Framework knowledge: Spring Bean lifecycle, @Transactional rules, JPA pitfalls, exception hierarchy patterns
+- References `docs/coding-standards.md` for Java naming and pattern conventions
 
 **angular-conventions:**
 - Activates for: `*.component.ts`, `*.service.ts`, `*.module.ts`, `*.directive.ts`, `*.pipe.ts`, `angular.json`
-- Teaches: Component lifecycle, signals vs RxJS, change detection, routing, RxJS operator selection
+- Framework knowledge: signals vs RxJS, OnPush change detection, component lifecycle, routing, takeUntilDestroyed
 - References `docs/coding-standards.md` for Angular/TypeScript conventions
 
 **react-conventions:**
 - Activates for: `*.tsx`, `*.jsx`, `next.config.*`, `vite.config.*`
-- Teaches: Hooks rules, rendering behavior, Server Components, React Query, common pitfalls
+- Framework knowledge: hooks rules, rendering behavior, Server vs Client Components, React Query, memoization
 - References `docs/coding-standards.md` for React/TypeScript conventions
 
-### Skill structure (each skill has two files)
-- `SKILL.md` — concise, auto-loaded when file context matches
+### Skill structure (per skill folder)
+- `SKILL.md` — concise knowledge, auto-loaded when file type matches
 - `reference.md` — detailed patterns and code examples, read on demand
-
----
-
-## Diagram 5: Single Source of Truth
-
-### What to visualize
-
-How conventions and definitions flow from centralized docs to all consumers. The key point: change once, applies everywhere.
-
-### Sources
-- `docs/coding-standards.md` — all coding conventions (Java, TypeScript, Angular, React)
-- `docs/review-severity-scale.md` — severity definitions and examples
-
-### Consumers of coding-standards.md
-- `skills/java-conventions/SKILL.md` — references for Java conventions
-- `skills/angular-conventions/SKILL.md` — references for Angular/TS conventions
-- `skills/react-conventions/SKILL.md` — references for React/TS conventions
-- `agents/reviewer-quality.md` — references for naming/convention checks
-- `agents/reviewer-architect.md` — references for architectural conventions
-- `agents/reviewer-security.md` — references for secure coding patterns
-- `agents/reviewer-performance.md` — references for performance conventions
-
-### Consumers of review-severity-scale.md
-- `agents/orchestrator-review.md`
-- `agents/reviewer-architect.md`
-- `agents/reviewer-security.md`
-- `agents/reviewer-quality.md`
-- `agents/reviewer-performance.md`
-- `agents/dependency-scanner.md`
 
 ---
 
@@ -169,35 +253,60 @@ How conventions and definitions flow from centralized docs to all consumers. The
 
 ### What to visualize
 
-The typical daily workflow from starting a session to committing code.
+Two parallel paths: the simple direct path for small tasks, and the `/build` orchestrated path for complex ones.
 
-### Flow
+### Simple task flow
+1. `cd ~/projects/my-app && claude`
+2. Claude loads: `~/.claude/CLAUDE.md` → project `.claude/CLAUDE.md` → `CLAUDE.local.md`
+3. **New project?** Claude asks kickoff questions → writes `.claude/CLAUDE.md`
+4. Developer asks Claude directly — ask → plan → implement
+5. Skills activate by file type
+6. `/review` before committing
+7. Developer writes Conventional Commit
 
-1. **Start session** — `cd ~/projects/my-app && claude`
-   - Claude loads `~/.claude/CLAUDE.md` (global baseline)
-   - Claude loads project `.claude/CLAUDE.md` (project context, if exists)
-   - Claude loads `CLAUDE.local.md` (private overrides, if exists)
+### Complex task flow (`/build`)
+1. Developer types `/build <task description>`
+2. Full orchestrated workflow runs (see Diagram 2)
+3. Commits happen automatically per task
+4. Integration review runs at the end
+5. Developer reviews summary report
 
-2. **New project?** (no `.claude/CLAUDE.md` exists)
-   - Claude asks kickoff questions (purpose, stack, scale, lifespan, NFRs, deployment)
-   - Writes answers to `.claude/CLAUDE.md`
+### On-demand commands (anytime)
+- `/review` — full code review before a PR
+- `/security <file>` — focused security check
+- `/document` — update project architecture docs
+- `/dependencies` — scan dependency health
+- `/upgrade` — upgrade deps with breaking change handling
+- `/test <file>` — generate tests for existing code
 
-3. **Work** — developer and Claude collaborate
-   - Skills auto-activate based on file context
-   - Claude follows ask → plan → implement sequence for non-trivial tasks
+---
 
-4. **Test** — after each logical unit of code is completed
-   - test-writer agent auto-spawns
-   - Generates tests targeting 90%+ coverage
-   - Uses project-appropriate framework (JUnit, Jest, Jasmine)
+## Diagram 7: Single Source of Truth
 
-5. **Review** — developer types `/review`
-   - Orchestrator spawns 4 reviewers in parallel
-   - Consolidated severity-sorted report saved to `reviews/`
-   - Developer fixes issues with main Claude session
+### What to visualize
 
-6. **Document** — developer types `/document` (for significant changes)
-   - Documenter analyzes codebase
-   - Updates `.claude/CLAUDE.md` and `.claude/docs/architecture.md`
+How conventions and definitions flow from two centralized docs to all consumers. The point: change once, applies everywhere.
 
-7. **Commit** — Conventional Commits (feat:, fix:, refactor:, etc.)
+### Source files
+- `docs/coding-standards.md` — all coding conventions (Java, TypeScript, Angular, React)
+- `docs/review-severity-scale.md` — severity definitions used by all reviewers
+
+### Consumers of `docs/coding-standards.md`
+- `skills/java-conventions/SKILL.md`
+- `skills/angular-conventions/SKILL.md`
+- `skills/react-conventions/SKILL.md`
+- `agents/developer.md` — follows standards when implementing
+- `agents/reviewer-quality.md` — checks naming, patterns, anti-patterns
+- `agents/reviewer-architect.md` — checks architectural conventions
+- `agents/reviewer-security.md` — checks secure coding patterns
+- `agents/reviewer-performance.md` — checks performance conventions
+
+### Consumers of `docs/review-severity-scale.md`
+- `agents/orchestrator-review.md`
+- `agents/orchestrator-main.md` (for per-task review cycles)
+- `agents/reviewer-architect.md`
+- `agents/reviewer-security.md`
+- `agents/reviewer-quality.md`
+- `agents/reviewer-performance.md`
+- `agents/integration-reviewer.md`
+- `agents/dependency-scanner.md`

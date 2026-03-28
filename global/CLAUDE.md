@@ -50,11 +50,27 @@ Never assume — always clarify first. Follow this sequence for any non-trivial 
 
 For trivial tasks (renaming a variable, fixing a typo, etc.), skip straight to implementation.
 
+**For complex tasks**, use `/build` instead — it triggers the full orchestrated workflow with research agents, parallel developer agents, and structured review cycles.
+
+## Plan Mode
+
+- Enter plan mode for any non-trivial task before writing code.
+- If something goes wrong mid-implementation: **stop, re-plan, resume**. Never push through a broken approach.
+- Use plan mode for verification steps too, not just building.
+
+## Self-Improvement Loop
+
+When the developer corrects your approach during a project:
+1. Note the correction in `tasks/lessons.md` (create from `templates/tasks/lessons.md` if it doesn't exist).
+2. Categorize it correctly: general, Java, TypeScript, Angular, React, or Architecture.
+3. Apply the correction immediately and for the rest of the session.
+4. At the end of a significant work session, suggest reviewing `tasks/lessons.md` to promote general lessons into `docs/coding-standards.md`.
+
 ## Workflow
 
 - **Conventional Commits:** `feat:`, `fix:`, `refactor:`, `test:`, `docs:`, `chore:`
 - One concern per commit — don't mix refactors with features
-- After completing any logical unit of code (feature, service, component, utility), automatically spawn the **test-writer** agent to generate tests. Every piece of code should have test coverage from the start.
+- Tests are part of every task — Developer agents write them inline. For manual test generation on existing code, use `/test`.
 - After changes, recommend running `/review` before committing and `/document` for significant additions
 
 ## What NOT To Do
